@@ -116,7 +116,7 @@ _Sent from ${companyInfo.name} Website_`;
     };
 
     return (
-        <section className="relative min-h-screen lg:min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden py-20 lg:py-24">
             {/* Beautiful Kerala Munnar Background - Original Image */}
             <div className="absolute inset-0">
                 <img
@@ -145,8 +145,8 @@ _Sent from ${companyInfo.name} Website_`;
                 />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10 py-8 pt-20 lg:py-0">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Left Content - With Glass Background on Mobile */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -165,28 +165,28 @@ _Sent from ${companyInfo.name} Website_`;
                             <span className="text-emerald-100 font-semibold">Best Travel Agency in Kerala</span>
                         </motion.div>
 
-                        {/* Main Heading - Larger on Mobile */}
+                        {/* Main Heading - Larger on Mobile, Normal on Desktop */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
                         >
                             <h1 className="leading-tight">
-                                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
                                     Kerala Tours
                                 </span>
-                                <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mt-1 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                                <span className="block text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mt-1 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
                                     Taxi Service
                                 </span>
                             </h1>
                         </motion.div>
 
-                        {/* Tagline - More Prominent */}
+                        {/* Tagline - More Prominent on Mobile, Normal on Desktop */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-emerald-200 font-light italic drop-shadow-lg"
+                            className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-emerald-200 font-light italic drop-shadow-lg"
                             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
                         >
                             &ldquo;From where you are, to where you want to be&rdquo;
