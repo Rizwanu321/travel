@@ -12,24 +12,34 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
     Car, Users, Package, Palmtree,
 };
 
-const categoryColors: Record<string, { bg: string; iconBg: string; text: string }> = {
+// Category configuration with images and colors (matching home page)
+const categoryConfig: Record<string, {
+    image: string;
+    gradient: string;
+    iconBg: string;
+    text: string;
+}> = {
     'car-rental': {
-        bg: 'from-blue-500 to-blue-600',
+        image: '/images/vehicle_innova.png',
+        gradient: 'from-blue-600/30 to-blue-800/60',
         iconBg: 'bg-blue-100',
         text: 'text-blue-600',
     },
     'tour-operators': {
-        bg: 'from-purple-500 to-purple-600',
+        image: '/images/service_city_tour.png',
+        gradient: 'from-purple-600/30 to-purple-800/60',
         iconBg: 'bg-purple-100',
         text: 'text-purple-600',
     },
     'tour-packages': {
-        bg: 'from-emerald-500 to-teal-600',
+        image: '/images/destination_munnar.png',
+        gradient: 'from-emerald-600/30 to-teal-800/60',
         iconBg: 'bg-emerald-100',
         text: 'text-emerald-600',
     },
     'holiday-packages': {
-        bg: 'from-amber-500 to-orange-600',
+        image: '/images/destination_alleppey.png',
+        gradient: 'from-amber-500/30 to-orange-700/60',
         iconBg: 'bg-amber-100',
         text: 'text-amber-600',
     },
@@ -121,7 +131,12 @@ export function CategoriesPageClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                         {categories.map((category, index) => {
                             const IconComponent = iconMap[category.icon] || Package;
-                            const colors = categoryColors[category.id] || { bg: 'from-gray-500 to-gray-600', iconBg: 'bg-gray-100', text: 'text-gray-600' };
+                            const config = categoryConfig[category.id] || {
+                                image: '/images/destination_munnar.png',
+                                gradient: 'from-gray-600/30 to-gray-800/60',
+                                iconBg: 'bg-gray-100',
+                                text: 'text-gray-600',
+                            };
                             const details = categoryDetails[category.id] || { features: [], description: '' };
                             const linkUrl = categoryLinks[category.id] || '/packages';
 
@@ -133,41 +148,47 @@ export function CategoriesPageClient() {
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
                                 >
-                                    <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow bg-white">
-                                        {/* Gradient Header */}
-                                        <div className={`h-32 md:h-40 bg-gradient-to-r ${colors.bg} relative overflow-hidden`}>
-                                            {/* Pattern overlay */}
-                                            <div className="absolute inset-0 opacity-10">
-                                                <div className="absolute top-0 right-0 w-40 h-40 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
-                                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white rounded-full translate-y-1/2 -translate-x-1/2" />
-                                            </div>
+                                    <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow bg-white group">
+                                        {/* Image Header with Gradient Overlay */}
+                                        <div className="h-40 md:h-48 relative overflow-hidden">
+                                            {/* Background Image */}
+                                            <img
+                                                src={config.image}
+                                                alt={category.name}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            />
+
+                                            {/* Gradient Overlay */}
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient}`} />
 
                                             {/* Icon */}
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                                                    <IconComponent className="h-10 w-10 md:h-12 md:w-12 text-white" />
+                                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+                                                    <IconComponent className="h-10 w-10 md:h-12 md:w-12 text-white drop-shadow-lg" />
                                                 </div>
                                             </div>
 
-                                            {/* Badge */}
+                                            {/* Count Badge */}
                                             <div className="absolute top-4 right-4">
-                                                <Badge className="bg-white text-gray-900 border-0 shadow px-3 py-1 font-semibold">
-                                                    {category.count} options
+                                                <Badge className="bg-white text-gray-900 border-0 shadow-lg px-3 py-1 font-bold">
+                                                    {category.count}+
+                                                </Badge>
+                                            </div>
+
+                                            {/* Rating Badge */}
+                                            <div className="absolute top-4 left-4">
+                                                <Badge className="bg-amber-500 text-white border-0 shadow-lg px-2 py-1">
+                                                    <Star className="h-3 w-3 fill-current mr-1" />
+                                                    4.9
                                                 </Badge>
                                             </div>
                                         </div>
 
                                         <CardContent className="p-5 md:p-6">
-                                            {/* Title & Rating */}
-                                            <div className="flex items-start justify-between mb-3">
-                                                <h2 className="text-xl md:text-2xl font-bold text-gray-900">
-                                                    {category.name}
-                                                </h2>
-                                                <div className="flex items-center gap-1 text-amber-500">
-                                                    <Star className="h-4 w-4 fill-current" />
-                                                    <span className="text-sm font-medium">4.9</span>
-                                                </div>
-                                            </div>
+                                            {/* Title */}
+                                            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                                                {category.name}
+                                            </h2>
 
                                             {/* Description */}
                                             <p className="text-gray-600 text-sm md:text-base mb-4">
@@ -178,8 +199,8 @@ export function CategoriesPageClient() {
                                             <div className="grid grid-cols-2 gap-2 mb-5">
                                                 {details.features.slice(0, 4).map((feature) => (
                                                     <div key={feature} className="flex items-center gap-2">
-                                                        <div className={`w-5 h-5 rounded-full ${colors.iconBg} flex items-center justify-center shrink-0`}>
-                                                            <Check className={`h-3 w-3 ${colors.text}`} />
+                                                        <div className={`w-5 h-5 rounded-full ${config.iconBg} flex items-center justify-center shrink-0`}>
+                                                            <Check className={`h-3 w-3 ${config.text}`} />
                                                         </div>
                                                         <span className="text-xs md:text-sm text-gray-600">{feature}</span>
                                                     </div>
@@ -189,14 +210,14 @@ export function CategoriesPageClient() {
                                             {/* Action Buttons */}
                                             <div className="flex gap-3">
                                                 <Link href={linkUrl} className="flex-1">
-                                                    <Button className={`w-full bg-gradient-to-r ${colors.bg} hover:opacity-90 text-white group h-11`}>
+                                                    <Button className={`w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white group h-11`}>
                                                         {linkUrl === '/services' ? 'View Services' : 'View Packages'}
                                                         <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                                     </Button>
                                                 </Link>
                                                 <Button
                                                     variant="outline"
-                                                    className="h-11 px-4 border-gray-200"
+                                                    className="h-11 px-4 border-gray-200 hover:bg-gray-50"
                                                     onClick={() => handleEnquiry(category.name)}
                                                 >
                                                     <MessageCircle className="h-4 w-4" />
@@ -228,15 +249,14 @@ export function CategoriesPageClient() {
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <Button
                                 onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
-                                className="bg-white text-emerald-600 hover:bg-gray-100 h-12 px-8 text-base rounded-xl"
+                                className="bg-white text-emerald-600 hover:bg-gray-100 h-12 px-8 text-base rounded-xl shadow-lg font-semibold"
                             >
                                 <MessageCircle className="h-5 w-5 mr-2" />
                                 Chat on WhatsApp
                             </Button>
                             <Button
                                 onClick={() => window.location.href = 'tel:+917558002009'}
-                                variant="outline"
-                                className="border-2 border-white text-white hover:bg-white/10 h-12 px-8 text-base rounded-xl"
+                                className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border-2 border-white/50 h-12 px-8 text-base rounded-xl font-semibold"
                             >
                                 <Phone className="h-5 w-5 mr-2" />
                                 Call +91 7558002009

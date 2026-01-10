@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Star, ThumbsUp, Quote, MessageSquare, ArrowRight, CheckCircle2, Award } from 'lucide-react';
+import { Star, ThumbsUp, Quote, ArrowRight, CheckCircle2, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -155,32 +155,20 @@ export function ReviewsSection() {
                     <Card className="bg-gradient-to-r from-emerald-600 to-teal-600 border-0 shadow-xl overflow-hidden">
                         <CardContent className="p-6 md:p-8 text-center">
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-                                Traveled with us?
+                                Join Our Happy Travelers!
                             </h3>
                             <p className="text-white/80 mb-6">
-                                Share your experience and help other travelers make informed decisions.
+                                Read what our customers have to say about their travel experiences with us.
                             </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                                <Link href="/reviews">
-                                    <Button
-                                        size="lg"
-                                        variant="outline"
-                                        className="bg-white/10 border-white/30 text-white hover:bg-white/20 group h-12 px-6"
-                                    >
-                                        View All Reviews
-                                        <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
-                                </Link>
-                                <Link href="/reviews#submit">
-                                    <Button
-                                        size="lg"
-                                        className="bg-white text-emerald-600 hover:bg-gray-100 group h-12 px-6"
-                                    >
-                                        <MessageSquare className="h-4 w-4 mr-2" />
-                                        Write a Review
-                                    </Button>
-                                </Link>
-                            </div>
+                            <Link href="/reviews">
+                                <Button
+                                    size="lg"
+                                    className="bg-white text-emerald-600 hover:bg-gray-100 group h-12 px-8"
+                                >
+                                    View All Reviews
+                                    <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
                         </CardContent>
                     </Card>
                 </motion.div>

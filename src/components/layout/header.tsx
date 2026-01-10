@@ -78,7 +78,13 @@ export function Header() {
 
                         {/* CTA Button - Desktop */}
                         <div className="hidden lg:flex items-center gap-3">
-                            <Button className="gradient-primary text-white shadow-lg hover:shadow-xl transition-shadow">
+                            <Button
+                                className="gradient-primary text-white shadow-lg hover:shadow-xl transition-shadow"
+                                onClick={() => {
+                                    const message = `Hi! I'd like to book a taxi. Please share available vehicles and rates.`;
+                                    window.open(`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
+                                }}
+                            >
                                 Book Now
                             </Button>
                         </div>
@@ -131,7 +137,15 @@ export function Header() {
 
                                     {/* Mobile menu footer */}
                                     <div className="p-4 border-t">
-                                        <Button className="w-full gradient-primary text-white shadow-lg" size="lg">
+                                        <Button
+                                            className="w-full gradient-primary text-white shadow-lg"
+                                            size="lg"
+                                            onClick={() => {
+                                                const message = `Hi! I'd like to book a taxi. Please share available vehicles and rates.`;
+                                                window.open(`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
+                                                setIsOpen(false);
+                                            }}
+                                        >
                                             Book Now
                                         </Button>
                                         <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">

@@ -2,44 +2,29 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ThumbsUp, Quote, MessageSquare, MapPin } from 'lucide-react';
+import { Star, ThumbsUp, Quote, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { reviews } from '@/lib/data';
 
-function StarRating({ rating, interactive = false, onRate }: { rating: number; interactive?: boolean; onRate?: (r: number) => void }) {
-    const [hovered, setHovered] = useState(0);
-
+function StarRating({ rating }: { rating: number }) {
     return (
         <div className="flex items-center gap-0.5">
             {[1, 2, 3, 4, 5].map((star) => (
-                <button
+                <Star
                     key={star}
-                    type="button"
-                    disabled={!interactive}
-                    onClick={() => onRate?.(star)}
-                    onMouseEnter={() => interactive && setHovered(star)}
-                    onMouseLeave={() => interactive && setHovered(0)}
-                    className={interactive ? 'cursor-pointer' : 'cursor-default'}
-                >
-                    <Star
-                        className={`h-5 w-5 transition-colors ${star <= (hovered || rating)
-                                ? 'fill-amber-400 text-amber-400'
-                                : 'fill-muted text-muted'
-                            }`}
-                    />
-                </button>
+                    className={`h-5 w-5 ${star <= rating
+                        ? 'fill-amber-400 text-amber-400'
+                        : 'fill-muted text-muted'
+                        }`}
+                />
             ))}
         </div>
     );
 }
 
 export function ReviewsPageClient() {
-    const [userRating, setUserRating] = useState(0);
     const [filterLocation, setFilterLocation] = useState<string | null>(null);
 
     const locations = [...new Set(reviews.map((r) => r.location))];
@@ -113,118 +98,69 @@ export function ReviewsPageClient() {
                 </div>
             </section>
 
-            {/* Reviews List */}
+            {/* Reviews List - Full Width Grid */}
             <section className="py-12 md:py-16">
                 <div className="container mx-auto px-4">
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        {/* Reviews */}
-                        <div className="lg:col-span-2 space-y-6">
-                            <h2 className="text-xl font-semibold text-foreground">
-                                {filteredReviews.length} Reviews
-                            </h2>
+                    <h2 className="text-xl font-semibold text-foreground mb-6">
+                        {filteredReviews.length} Reviews
+                    </h2>
 
-                            {filteredReviews.map((review, index) => (
-                                <motion.div
-                                    key={review.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                >
-                                    <Card className="hover-lift border-0 shadow-sm">
-                                        <CardContent className="p-6">
-                                            <Quote className="h-8 w-8 text-primary/20 mb-4" />
-
-                                            <StarRating rating={review.rating} />
-
-                                            <p className="text-foreground mt-4 mb-6 leading-relaxed">
-                                                &ldquo;{review.comment}&rdquo;
-                                            </p>
-
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <Avatar className="h-10 w-10">
-                                                        <AvatarFallback className="bg-primary/10 text-primary font-medium">
-                                                            {review.userName.split(' ').map(n => n[0]).join('')}
-                                                        </AvatarFallback>
-                                                    </Avatar>
-                                                    <div>
-                                                        <div className="font-medium text-foreground">{review.userName}</div>
-                                                        <div className="text-sm text-muted-foreground flex items-center gap-1">
-                                                            <MapPin className="h-3 w-3" />
-                                                            {review.location}
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex items-center gap-4">
-                                                    {review.helpful && (
-                                                        <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors">
-                                                            <ThumbsUp className="h-4 w-4" />
-                                                            <span>{review.helpful}</span>
-                                                        </button>
-                                                    )}
-                                                    <span className="text-xs text-muted-foreground">
-                                                        {new Date(review.date).toLocaleDateString('en-IN', {
-                                                            day: 'numeric',
-                                                            month: 'short',
-                                                            year: 'numeric',
-                                                        })}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Submit Review Form */}
-                        <div className="lg:col-span-1">
-                            <div className="sticky top-[140px] md:top-[180px]">
-                                <Card className="border-0 shadow-lg" id="submit">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredReviews.map((review, index) => (
+                            <motion.div
+                                key={review.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                            >
+                                <Card className="h-full hover-lift border-0 shadow-sm">
                                     <CardContent className="p-6">
-                                        <h3 className="text-xl font-semibold text-foreground mb-2 flex items-center gap-2">
-                                            <MessageSquare className="h-5 w-5 text-primary" />
-                                            Write a Review
-                                        </h3>
-                                        <p className="text-sm text-muted-foreground mb-6">
-                                            Share your experience with us!
+                                        <Quote className="h-8 w-8 text-primary/20 mb-4" />
+
+                                        <StarRating rating={review.rating} />
+
+                                        <p className="text-foreground mt-4 mb-6 leading-relaxed">
+                                            &ldquo;{review.comment}&rdquo;
                                         </p>
 
-                                        <form className="space-y-4">
-                                            <div className="space-y-2">
-                                                <Label>Your Rating</Label>
-                                                <StarRating rating={userRating} interactive onRate={setUserRating} />
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <Avatar className="h-10 w-10">
+                                                    <AvatarFallback className="bg-primary/10 text-primary font-medium">
+                                                        {review.userName.split(' ').map(n => n[0]).join('')}
+                                                    </AvatarFallback>
+                                                </Avatar>
+                                                <div>
+                                                    <div className="font-medium text-foreground">{review.userName}</div>
+                                                    <div className="text-sm text-muted-foreground flex items-center gap-1">
+                                                        <MapPin className="h-3 w-3" />
+                                                        {review.location}
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <div className="space-y-2">
-                                                <Label htmlFor="review-name">Your Name</Label>
-                                                <Input id="review-name" placeholder="Enter your name" />
+                                            <div className="flex items-center gap-4">
+                                                {review.helpful && (
+                                                    <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors">
+                                                        <ThumbsUp className="h-4 w-4" />
+                                                        <span>{review.helpful}</span>
+                                                    </button>
+                                                )}
                                             </div>
+                                        </div>
 
-                                            <div className="space-y-2">
-                                                <Label htmlFor="review-location">Location</Label>
-                                                <Input id="review-location" placeholder="City / Town" />
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <Label htmlFor="review-comment">Your Review</Label>
-                                                <Textarea
-                                                    id="review-comment"
-                                                    placeholder="Tell us about your experience..."
-                                                    rows={4}
-                                                />
-                                            </div>
-
-                                            <Button className="w-full gradient-primary text-white">
-                                                Submit Review
-                                            </Button>
-                                        </form>
+                                        <div className="mt-4 pt-4 border-t text-xs text-muted-foreground">
+                                            {new Date(review.date).toLocaleDateString('en-IN', {
+                                                day: 'numeric',
+                                                month: 'short',
+                                                year: 'numeric',
+                                            })}
+                                        </div>
                                     </CardContent>
                                 </Card>
-                            </div>
-                        </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
