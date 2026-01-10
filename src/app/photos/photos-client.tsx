@@ -65,9 +65,9 @@ export function PhotosPageClient() {
     };
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-gray-50">
             {/* Hero Header */}
-            <section className="gradient-hero text-white py-16 md:py-20">
+            <section className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-12 pt-8 md:py-16 lg:py-20">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -78,8 +78,8 @@ export function PhotosPageClient() {
                             <Camera className="h-4 w-4" />
                             <span>Visual Gallery</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4">Photo Gallery</h1>
-                        <p className="text-lg text-white/80 max-w-2xl mx-auto">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">Photo Gallery</h1>
+                        <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto">
                             Explore our vehicles, destinations, and the experiences we offer through our gallery.
                         </p>
                     </motion.div>
@@ -87,14 +87,14 @@ export function PhotosPageClient() {
             </section>
 
             {/* Category Filter */}
-            <section className="py-6 bg-background border-b sticky top-[64px] md:top-[104px] z-40">
+            <section className="py-6 bg-white border-b shadow-sm sticky top-[64px] md:top-[104px] z-40">
                 <div className="container mx-auto px-4">
                     <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2">
                         <Button
                             variant={selectedCategory === null ? 'default' : 'outline'}
                             size="sm"
                             onClick={() => setSelectedCategory(null)}
-                            className={selectedCategory === null ? 'gradient-primary text-white' : ''}
+                            className={selectedCategory === null ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-0' : ''}
                         >
                             All Photos
                         </Button>
@@ -104,7 +104,7 @@ export function PhotosPageClient() {
                                 variant={selectedCategory === category.id ? 'default' : 'outline'}
                                 size="sm"
                                 onClick={() => setSelectedCategory(category.id)}
-                                className={selectedCategory === category.id ? 'gradient-primary text-white' : ''}
+                                className={selectedCategory === category.id ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-0' : ''}
                             >
                                 {category.name}
                             </Button>
@@ -114,24 +114,24 @@ export function PhotosPageClient() {
             </section>
 
             {/* Photo Grid */}
-            <section className="py-12 md:py-16">
+            <section className="py-8 md:py-12 lg:py-16">
                 <div className="container mx-auto px-4">
-                    <div className="mb-6 text-muted-foreground">
+                    <div className="mb-6 text-gray-600 font-medium">
                         Showing {filteredPhotos.length} photos
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                         {filteredPhotos.map((photo, index) => (
                             <motion.div
                                 key={photo.id}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
+                                transition={{ delay: index * 0.03 }}
                                 className="group cursor-pointer"
                                 onClick={() => setSelectedPhoto(photo)}
                             >
-                                <div className="aspect-square rounded-2xl overflow-hidden relative">
+                                <div className="aspect-square rounded-xl md:rounded-2xl overflow-hidden relative shadow-md hover:shadow-xl transition-all duration-300">
                                     <img
                                         src={photo.image}
                                         alt={photo.title}
@@ -139,13 +139,15 @@ export function PhotosPageClient() {
                                     />
 
                                     {/* Hover overlay */}
-                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <ZoomIn className="h-8 w-8 text-white" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <ZoomIn className="h-8 w-8 md:h-10 md:w-10 text-white drop-shadow-lg" />
+                                        </div>
                                     </div>
 
                                     {/* Title overlay */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
-                                        <p className="text-white text-sm font-medium truncate">{photo.title}</p>
+                                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                                        <p className="text-white text-xs md:text-sm font-semibold truncate drop-shadow-lg">{photo.title}</p>
                                     </div>
                                 </div>
                             </motion.div>
