@@ -1,0 +1,8 @@
+export { HeroSection } from './hero-section';
+export { QuickActions } from './quick-actions';
+export { StatsSection } from './stats-section';
+export { FeaturedPackages } from './featured-packages';
+export { ServicesSection } from './services-section';
+export { ReviewsSection } from './reviews-section';
+export { CategoriesSection } from './categories-section';
+export { CTASection } from './cta-section';
