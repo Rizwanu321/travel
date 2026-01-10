@@ -147,57 +147,57 @@ _Sent from ${companyInfo.name} Website_`;
 
             <div className="container mx-auto px-4 relative z-10 py-8 pt-20 lg:py-0">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                    {/* Left Content */}
+                    {/* Left Content - With Glass Background on Mobile */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-white space-y-4 md:space-y-6 lg:space-y-8"
+                        className="text-white space-y-4 md:space-y-6 lg:space-y-8 bg-black/30 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-5 md:p-6 lg:p-0 rounded-2xl lg:rounded-none border border-white/10 lg:border-0"
                     >
                         {/* Badge */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full text-xs md:text-sm font-medium border border-emerald-400/30"
+                            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 backdrop-blur-md rounded-full text-xs md:text-sm font-medium border border-emerald-400/40 shadow-lg"
                         >
-                            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-yellow-400" />
-                            <span className="text-emerald-100">Best Travel Agency in Kerala</span>
+                            <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4 text-yellow-400" />
+                            <span className="text-emerald-100 font-semibold">Best Travel Agency in Kerala</span>
                         </motion.div>
 
-                        {/* Main Heading */}
+                        {/* Main Heading - Larger on Mobile */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
                         >
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                                <span className="bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-lg">
+                            <h1 className="leading-tight">
+                                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
                                     Kerala Tours
                                 </span>
-                                <br />
-                                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white/90 drop-shadow-md">
+                                <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mt-1 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
                                     Taxi Service
                                 </span>
                             </h1>
                         </motion.div>
 
-                        {/* Tagline */}
+                        {/* Tagline - More Prominent */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-emerald-100/90 font-light italic drop-shadow-md"
+                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-emerald-200 font-light italic drop-shadow-lg"
+                            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
                         >
                             &ldquo;From where you are, to where you want to be&rdquo;
                         </motion.p>
 
-                        {/* Description - Visible on all devices */}
+                        {/* Description - Better Readability */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6 }}
-                            className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed max-w-xl drop-shadow-sm"
+                            className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl drop-shadow-md font-medium"
                         >
                             We offer <span className="text-emerald-300 font-medium">best cab services at affordable prices</span>.
                             Experience city tours, airport taxi service, round trips, self-drive cars, and more.
