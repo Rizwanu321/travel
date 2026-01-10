@@ -2,7 +2,22 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, User, Phone, Navigation, MessageCircle } from 'lucide-react';
+import {
+    MapPin,
+    Calendar,
+    User,
+    Phone,
+    MessageCircle,
+    Car,
+    Plane,
+    Map,
+    Shield,
+    Clock,
+    Star,
+    ArrowRight,
+    Sparkles,
+    Navigation
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -10,6 +25,21 @@ import { Card, CardContent } from '@/components/ui/card';
 import { companyInfo } from '@/lib/data';
 
 const WHATSAPP_NUMBER = '917558002009'; // +91 7558002009
+
+// Quick service highlights
+const services = [
+    { icon: Car, label: 'City Tours' },
+    { icon: Plane, label: 'Airport Taxi' },
+    { icon: Map, label: 'Round Trips' },
+    { icon: Navigation, label: 'Self Drive' },
+];
+
+// Trust badges
+const trustBadges = [
+    { icon: Shield, label: 'Safe & Secure' },
+    { icon: Clock, label: '24/7 Available' },
+    { icon: Star, label: '5000+ Happy Customers' },
+];
 
 export function HeroSection() {
     const [formData, setFormData] = useState({
@@ -20,6 +50,7 @@ export function HeroSection() {
         drop: '',
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [focusedField, setFocusedField] = useState<string | null>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
@@ -83,133 +114,195 @@ _Sent from ${companyInfo.name} Website_`;
 
         setIsSubmitting(false);
     };
+
     return (
-        <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center overflow-hidden">
-            {/* Background Image with overlay */}
+        <section className="relative min-h-screen lg:min-h-screen flex items-center overflow-hidden">
+            {/* Beautiful Kerala Munnar Background - Original Image */}
             <div className="absolute inset-0">
                 <img
                     src="/images/hero_kerala_munnar.png"
-                    alt="Kerala Tea Plantations"
-                    className="w-full h-full object-cover"
+                    alt="Kerala Munnar Tea Plantations - God's Own Country"
+                    className="w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/50" />
+                {/* Gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 lg:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
             </div>
 
-            {/* Decorative circles */}
-            <div className="absolute top-20 right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+            {/* Subtle animated elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.3 }}
+                    transition={{ duration: 2 }}
+                    className="absolute -top-40 -right-40 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-gradient-to-br from-emerald-400/20 to-teal-500/10 rounded-full blur-3xl"
+                />
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.2 }}
+                    transition={{ duration: 2, delay: 0.5 }}
+                    className="absolute -bottom-60 -left-40 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-gradient-to-tr from-emerald-500/15 to-teal-400/10 rounded-full blur-3xl"
+                />
+            </div>
 
-            {/* Decorative pattern */}
-            <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }} />
-
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="container mx-auto px-4 relative z-10 py-8 pt-20 lg:py-0">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     {/* Left Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-white space-y-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-white space-y-4 md:space-y-6 lg:space-y-8"
                     >
                         {/* Badge */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full text-xs md:text-sm font-medium border border-emerald-400/30"
                         >
-                            <span className="animate-pulse">🌟</span>
-                            <span>Trusted by 5000+ Happy Travelers</span>
+                            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-yellow-400" />
+                            <span className="text-emerald-100">Best Travel Agency in Kerala</span>
                         </motion.div>
 
-                        {/* Heading */}
-                        <motion.h1
+                        {/* Main Heading */}
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+                            transition={{ delay: 0.4 }}
                         >
-                            {companyInfo.name}
-                            <span className="block text-white/80 text-2xl md:text-3xl lg:text-4xl font-normal mt-2">
-                                {companyInfo.tagline}
-                            </span>
-                        </motion.h1>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                <span className="bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-lg">
+                                    Kerala Tours
+                                </span>
+                                <br />
+                                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white/90 drop-shadow-md">
+                                    Taxi Service
+                                </span>
+                            </h1>
+                        </motion.div>
 
                         {/* Tagline */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            className="text-xl md:text-2xl text-white/90 font-light italic"
+                            transition={{ delay: 0.5 }}
+                            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-emerald-100/90 font-light italic drop-shadow-md"
                         >
-                            &ldquo;{companyInfo.slogan}&rdquo;
+                            &ldquo;From where you are, to where you want to be&rdquo;
                         </motion.p>
 
-                        {/* Description */}
+                        {/* Description - Visible on all devices */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
-                            className="text-base md:text-lg text-white/80 leading-relaxed max-w-xl"
+                            transition={{ delay: 0.6 }}
+                            className="text-sm md:text-base lg:text-lg text-white/80 leading-relaxed max-w-xl drop-shadow-sm"
                         >
-                            {companyInfo.description}
+                            We offer <span className="text-emerald-300 font-medium">best cab services at affordable prices</span>.
+                            Experience city tours, airport taxi service, round trips, self-drive cars, and more.
+                            Get in touch with us or book your cab now!
                         </motion.p>
 
-                        {/* Location tags */}
+                        {/* Quick Services */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
-                            className="flex flex-wrap gap-2"
+                            transition={{ delay: 0.7 }}
+                            className="flex flex-wrap gap-2 md:gap-3"
                         >
-                            {companyInfo.locations.map((location, index) => (
-                                <span
-                                    key={location}
-                                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm"
+                            {services.map((service, index) => (
+                                <motion.div
+                                    key={service.label}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.8 + index * 0.1 }}
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-2.5 bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all cursor-pointer group"
                                 >
-                                    <MapPin className="h-3 w-3" />
-                                    {location}
-                                </span>
+                                    <service.icon className="h-3.5 w-3.5 md:h-4 md:w-4 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                                    <span className="text-xs md:text-sm font-medium text-white/90 group-hover:text-white transition-colors">{service.label}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+
+                        {/* Trust Badges - Smaller on mobile */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.9 }}
+                            className="hidden md:flex flex-wrap gap-4 lg:gap-6 pt-2 lg:pt-4"
+                        >
+                            {trustBadges.map((badge) => (
+                                <div key={badge.label} className="flex items-center gap-2">
+                                    <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                        <badge.icon className="h-3.5 w-3.5 lg:h-4 lg:w-4 text-emerald-400" />
+                                    </div>
+                                    <span className="text-xs lg:text-sm text-white/80">{badge.label}</span>
+                                </div>
                             ))}
                         </motion.div>
                     </motion.div>
 
-                    {/* Right - Booking Form */}
+                    {/* Right - Booking Form (User-Friendly White Design) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative"
                     >
-                        <Card className="glass-dark border-white/20 shadow-2xl overflow-hidden">
-                            <div className="bg-white/10 px-6 py-4 border-b border-white/10">
-                                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-                                    <Navigation className="h-5 w-5" />
-                                    Book Your Cab Now
-                                </h2>
-                                <p className="text-sm text-white/70 mt-1">
-                                    Quick & Easy Booking
-                                </p>
+                        {/* Soft glow effect */}
+                        <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 rounded-2xl md:rounded-3xl blur-xl md:blur-2xl opacity-50" />
+
+                        {/* White Card - User Friendly */}
+                        <Card className="relative bg-white shadow-2xl overflow-hidden rounded-xl md:rounded-2xl border-0">
+                            {/* Card Header */}
+                            <div className="relative bg-gradient-to-r from-emerald-600 to-teal-600 px-4 md:px-6 py-4 md:py-5">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white/20 flex items-center justify-center">
+                                        <Car className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-lg md:text-xl font-bold text-white">
+                                            Book Your Cab
+                                        </h2>
+                                        <p className="text-xs md:text-sm text-white/80">
+                                            Quick & Easy Booking
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <CardContent className="p-6 space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="name" className="text-white/90 text-sm font-medium flex items-center gap-2">
-                                        <User className="h-4 w-4" />
-                                        Your Name
+
+                            <CardContent className="p-4 md:p-6 space-y-3 md:space-y-4 bg-white">
+                                {/* Name Field */}
+                                <motion.div
+                                    className="space-y-1.5 md:space-y-2"
+                                    animate={{ scale: focusedField === 'name' ? 1.01 : 1 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Label htmlFor="name" className="text-gray-700 text-xs md:text-sm font-medium flex items-center gap-1.5 md:gap-2">
+                                        <User className="h-3.5 w-3.5 md:h-4 md:w-4 text-emerald-600" />
+                                        Your Name <span className="text-red-500">*</span>
                                     </Label>
                                     <Input
                                         id="name"
                                         placeholder="Enter your full name"
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 h-11"
+                                        onFocus={() => setFocusedField('name')}
+                                        onBlur={() => setFocusedField(null)}
+                                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-emerald-500/20 h-10 md:h-12 rounded-lg md:rounded-xl text-sm md:text-base transition-all"
                                     />
-                                </div>
+                                </motion.div>
 
-                                <div className="space-y-2">
-                                    <Label htmlFor="date" className="text-white/90 text-sm font-medium flex items-center gap-2">
-                                        <Calendar className="h-4 w-4" />
+                                {/* Date Field */}
+                                <motion.div
+                                    className="space-y-1.5 md:space-y-2"
+                                    animate={{ scale: focusedField === 'date' ? 1.01 : 1 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Label htmlFor="date" className="text-gray-700 text-xs md:text-sm font-medium flex items-center gap-1.5 md:gap-2">
+                                        <Calendar className="h-3.5 w-3.5 md:h-4 md:w-4 text-emerald-600" />
                                         Travel Date
                                     </Label>
                                     <Input
@@ -217,14 +310,21 @@ _Sent from ${companyInfo.name} Website_`;
                                         type="date"
                                         value={formData.date}
                                         onChange={handleInputChange}
-                                        className="bg-white/10 border-white/20 text-white focus:border-white/40 h-11"
+                                        onFocus={() => setFocusedField('date')}
+                                        onBlur={() => setFocusedField(null)}
+                                        className="bg-gray-50 border-gray-200 text-gray-900 focus:border-emerald-500 focus:ring-emerald-500/20 h-10 md:h-12 rounded-lg md:rounded-xl text-sm md:text-base transition-all"
                                     />
-                                </div>
+                                </motion.div>
 
-                                <div className="space-y-2">
-                                    <Label htmlFor="mobile" className="text-white/90 text-sm font-medium flex items-center gap-2">
-                                        <Phone className="h-4 w-4" />
-                                        Mobile Number
+                                {/* Mobile Field */}
+                                <motion.div
+                                    className="space-y-1.5 md:space-y-2"
+                                    animate={{ scale: focusedField === 'mobile' ? 1.01 : 1 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Label htmlFor="mobile" className="text-gray-700 text-xs md:text-sm font-medium flex items-center gap-1.5 md:gap-2">
+                                        <Phone className="h-3.5 w-3.5 md:h-4 md:w-4 text-emerald-600" />
+                                        Mobile Number <span className="text-red-500">*</span>
                                     </Label>
                                     <Input
                                         id="mobile"
@@ -232,51 +332,90 @@ _Sent from ${companyInfo.name} Website_`;
                                         placeholder="Enter your mobile number"
                                         value={formData.mobile}
                                         onChange={handleInputChange}
-                                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 h-11"
+                                        onFocus={() => setFocusedField('mobile')}
+                                        onBlur={() => setFocusedField(null)}
+                                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-emerald-500/20 h-10 md:h-12 rounded-lg md:rounded-xl text-sm md:text-base transition-all"
                                     />
+                                </motion.div>
+
+                                {/* Pickup & Drop in row */}
+                                <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                    {/* Pickup Field */}
+                                    <motion.div
+                                        className="space-y-1.5 md:space-y-2"
+                                        animate={{ scale: focusedField === 'pickup' ? 1.01 : 1 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Label htmlFor="pickup" className="text-gray-700 text-xs md:text-sm font-medium flex items-center gap-1 md:gap-2">
+                                            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 text-green-600" />
+                                            Pickup <span className="text-red-500">*</span>
+                                        </Label>
+                                        <Input
+                                            id="pickup"
+                                            placeholder="From?"
+                                            value={formData.pickup}
+                                            onChange={handleInputChange}
+                                            onFocus={() => setFocusedField('pickup')}
+                                            onBlur={() => setFocusedField(null)}
+                                            className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-emerald-500/20 h-10 md:h-12 rounded-lg md:rounded-xl text-sm md:text-base transition-all"
+                                        />
+                                    </motion.div>
+
+                                    {/* Drop Field */}
+                                    <motion.div
+                                        className="space-y-1.5 md:space-y-2"
+                                        animate={{ scale: focusedField === 'drop' ? 1.01 : 1 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Label htmlFor="drop" className="text-gray-700 text-xs md:text-sm font-medium flex items-center gap-1 md:gap-2">
+                                            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-500" />
+                                            Drop <span className="text-red-500">*</span>
+                                        </Label>
+                                        <Input
+                                            id="drop"
+                                            placeholder="To?"
+                                            value={formData.drop}
+                                            onChange={handleInputChange}
+                                            onFocus={() => setFocusedField('drop')}
+                                            onBlur={() => setFocusedField(null)}
+                                            className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-emerald-500/20 h-10 md:h-12 rounded-lg md:rounded-xl text-sm md:text-base transition-all"
+                                        />
+                                    </motion.div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <Label htmlFor="pickup" className="text-white/90 text-sm font-medium flex items-center gap-2">
-                                        <MapPin className="h-4 w-4 text-green-400" />
-                                        Pick Up Location
-                                    </Label>
-                                    <Input
-                                        id="pickup"
-                                        placeholder="From where?"
-                                        value={formData.pickup}
-                                        onChange={handleInputChange}
-                                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 h-11"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label htmlFor="drop" className="text-white/90 text-sm font-medium flex items-center gap-2">
-                                        <MapPin className="h-4 w-4 text-red-400" />
-                                        Drop Location
-                                    </Label>
-                                    <Input
-                                        id="drop"
-                                        placeholder="Where to?"
-                                        value={formData.drop}
-                                        onChange={handleInputChange}
-                                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 h-11"
-                                    />
-                                </div>
-
-                                <Button
-                                    size="lg"
-                                    onClick={handleBookNow}
-                                    disabled={isSubmitting}
-                                    className="w-full gradient-accent text-foreground font-semibold h-12 text-base shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 gap-2"
+                                {/* Submit Button */}
+                                <motion.div
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="pt-1 md:pt-2"
                                 >
-                                    <MessageCircle className="h-5 w-5" />
-                                    {isSubmitting ? 'Opening WhatsApp...' : 'Book via WhatsApp'}
-                                </Button>
+                                    <Button
+                                        size="lg"
+                                        onClick={handleBookNow}
+                                        disabled={isSubmitting}
+                                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold h-12 md:h-14 text-sm md:text-base rounded-lg md:rounded-xl shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all gap-2 group"
+                                    >
+                                        <MessageCircle className="h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                                        {isSubmitting ? 'Opening WhatsApp...' : 'Book via WhatsApp'}
+                                        <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </motion.div>
 
-                                <p className="text-center text-xs text-white/50">
-                                    No hidden charges • 24/7 Support • Instant confirmation
-                                </p>
+                                {/* Trust indicators */}
+                                <div className="flex items-center justify-center gap-2 md:gap-4 pt-1 md:pt-2 flex-wrap">
+                                    <div className="flex items-center gap-1 md:gap-1.5 text-gray-500 text-[10px] md:text-xs">
+                                        <Shield className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-600" />
+                                        <span>No hidden charges</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 md:gap-1.5 text-gray-500 text-[10px] md:text-xs">
+                                        <Clock className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-600" />
+                                        <span>24/7 Support</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 md:gap-1.5 text-gray-500 text-[10px] md:text-xs">
+                                        <Star className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-600" />
+                                        <span>Instant confirmation</span>
+                                    </div>
+                                </div>
                             </CardContent>
                         </Card>
                     </motion.div>

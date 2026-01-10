@@ -1,24 +1,47 @@
 import {
   HeroSection,
   QuickActions,
-  StatsSection,
+  NavigationTabs,
   FeaturedPackages,
   ServicesSection,
-  ReviewsSection,
   CategoriesSection,
+  ReviewsSection,
   CTASection,
 } from '@/components/home';
 
 export default function HomePage() {
   return (
     <>
+      {/* 1. Hero Section with Booking Form */}
       <HeroSection />
+
+      {/* 2. Quick Actions (Call, Enquire, Directions, Share, WhatsApp) */}
       <QuickActions />
-      <StatsSection />
-      <FeaturedPackages />
-      <ServicesSection />
-      <CategoriesSection />
-      <ReviewsSection />
+
+      {/* 3. Navigation Tabs (Overview, Tour Packages, Services, etc.) */}
+      <NavigationTabs />
+
+      {/* 4. Tour Packages Section */}
+      <section id="packages">
+        <FeaturedPackages />
+      </section>
+
+      {/* 5. Services Section */}
+      <section id="services">
+        <ServicesSection />
+      </section>
+
+      {/* 6. Categories Section */}
+      <section id="categories">
+        <CategoriesSection />
+      </section>
+
+      {/* 7. Reviews Section */}
+      <section id="reviews">
+        <ReviewsSection />
+      </section>
+
+      {/* 8. Call to Action */}
       <CTASection />
     </>
   );

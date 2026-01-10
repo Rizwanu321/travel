@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Share2, MessageSquare } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { contactInfo } from '@/lib/data';
+
+const WHATSAPP_NUMBER = '917558002009';
 
 const quickActions = [
     {
@@ -11,14 +13,17 @@ const quickActions = [
         label: 'Call Now',
         icon: Phone,
         href: `tel:${contactInfo.phone}`,
-        color: 'bg-blue-500 hover:bg-blue-600',
+        bgColor: 'bg-blue-500',
+        hoverColor: 'hover:bg-blue-600',
     },
     {
         id: 'enquire',
-        label: 'Enquire Now',
+        label: 'Enquire',
         icon: MessageCircle,
-        href: '#enquire',
-        color: 'bg-purple-500 hover:bg-purple-600',
+        href: `https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I want to enquire about your cab services.`,
+        target: '_blank',
+        bgColor: 'bg-purple-500',
+        hoverColor: 'hover:bg-purple-600',
     },
     {
         id: 'directions',
@@ -26,7 +31,8 @@ const quickActions = [
         icon: MapPin,
         href: contactInfo.googleMapsUrl,
         target: '_blank',
-        color: 'bg-red-500 hover:bg-red-600',
+        bgColor: 'bg-red-500',
+        hoverColor: 'hover:bg-red-600',
     },
     {
         id: 'share',
@@ -35,64 +41,120 @@ const quickActions = [
         onClick: () => {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Kerala Tours - Best Travel Agency',
-                    text: 'Check out Kerala Tours for amazing travel packages!',
+                    title: 'Kerala Tours Taxi Service',
+                    text: 'Check out Kerala Tours for best cab services at affordable prices!',
                     url: window.location.href,
                 });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
             }
         },
-        color: 'bg-orange-500 hover:bg-orange-600',
-    },
-    {
-        id: 'whatsapp',
-        label: 'WhatsApp',
-        icon: MessageSquare,
-        href: `https://wa.me/${contactInfo.whatsapp}?text=Hi! I'm interested in booking a cab.`,
-        target: '_blank',
-        color: 'bg-green-500 hover:bg-green-600',
+        bgColor: 'bg-orange-500',
+        hoverColor: 'hover:bg-orange-600',
     },
 ];
 
+// WhatsApp floating button for mobile
+const whatsappAction = {
+    label: 'WhatsApp',
+    href: `https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'm interested in booking a cab.`,
+};
+
 export function QuickActions() {
     return (
-        <section className="py-6 bg-background sticky top-[64px] md:top-[104px] z-40 border-b">
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-center gap-2 md:gap-4 overflow-x-auto scrollbar-hide pb-2 -mb-2">
-                    {quickActions.map((action, index) => (
-                        <motion.div
-                            key={action.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                        >
-                            {action.href ? (
-                                <a
-                                    href={action.href}
-                                    target={action.target}
-                                    rel={action.target === '_blank' ? 'noopener noreferrer' : undefined}
-                                >
+        <>
+            {/* Quick Actions Bar - Sticky below header */}
+            <section className="py-3 md:py-4 bg-white shadow-sm sticky top-[60px] md:top-[72px] z-40 border-b border-gray-100">
+                <div className="container mx-auto px-3 md:px-4">
+                    {/* Mobile: Horizontal scroll */}
+                    <div className="flex items-center justify-between md:justify-center gap-2 md:gap-4">
+                        {quickActions.map((action, index) => (
+                            <motion.div
+                                key={action.id}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                                className="flex-1 md:flex-initial"
+                            >
+                                {action.href ? (
+                                    <a
+                                        href={action.href}
+                                        target={action.target}
+                                        rel={action.target === '_blank' ? 'noopener noreferrer' : undefined}
+                                        className="block"
+                                    >
+                                        <Button
+                                            variant="ghost"
+                                            className={`w-full flex flex-col items-center gap-1 md:gap-1.5 h-auto py-2 md:py-3 px-2 md:px-5 ${action.bgColor} ${action.hoverColor} text-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5`}
+                                        >
+                                            <action.icon className="h-4 w-4 md:h-5 md:w-5" />
+                                            <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{action.label}</span>
+                                        </Button>
+                                    </a>
+                                ) : (
                                     <Button
                                         variant="ghost"
-                                        className={`flex flex-col items-center gap-1.5 h-auto py-3 px-4 min-w-[70px] ${action.color} text-white rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5`}
+                                        onClick={action.onClick}
+                                        className={`w-full flex flex-col items-center gap-1 md:gap-1.5 h-auto py-2 md:py-3 px-2 md:px-5 ${action.bgColor} ${action.hoverColor} text-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5`}
                                     >
-                                        <action.icon className="h-5 w-5" />
-                                        <span className="text-xs font-medium whitespace-nowrap">{action.label}</span>
+                                        <action.icon className="h-4 w-4 md:h-5 md:w-5" />
+                                        <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{action.label}</span>
                                     </Button>
-                                </a>
-                            ) : (
+                                )}
+                            </motion.div>
+                        ))}
+
+                        {/* WhatsApp button - visible always */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex-1 md:flex-initial"
+                        >
+                            <a
+                                href={whatsappAction.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block"
+                            >
                                 <Button
                                     variant="ghost"
-                                    onClick={action.onClick}
-                                    className={`flex flex-col items-center gap-1.5 h-auto py-3 px-4 min-w-[70px] ${action.color} text-white rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5`}
+                                    className="w-full flex flex-col items-center gap-1 md:gap-1.5 h-auto py-2 md:py-3 px-2 md:px-5 bg-green-500 hover:bg-green-600 text-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
                                 >
-                                    <action.icon className="h-5 w-5" />
-                                    <span className="text-xs font-medium whitespace-nowrap">{action.label}</span>
+                                    {/* WhatsApp Icon */}
+                                    <svg className="h-4 w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                    </svg>
+                                    <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">WhatsApp</span>
                                 </Button>
-                            )}
+                            </a>
                         </motion.div>
-                    ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* Floating WhatsApp Button for Mobile - Fixed at bottom right */}
+            <a
+                href={whatsappAction.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fixed bottom-6 right-6 z-50 md:hidden"
+            >
+                <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-colors"
+                >
+                    <svg className="h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                </motion.div>
+            </a>
+        </>
     );
 }

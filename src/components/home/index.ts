@@ -1,5 +1,6 @@
 export { HeroSection } from './hero-section';
 export { QuickActions } from './quick-actions';
+export { NavigationTabs } from './navigation-tabs';
 export { StatsSection } from './stats-section';
 export { FeaturedPackages } from './featured-packages';
 export { ServicesSection } from './services-section';
