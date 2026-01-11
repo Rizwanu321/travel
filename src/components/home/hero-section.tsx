@@ -172,10 +172,10 @@ _Sent from ${companyInfo.name} Website_`;
                             transition={{ delay: 0.4 }}
                         >
                             <h1 className="leading-tight">
-                                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
                                     Kerala Tours
                                 </span>
-                                <span className="block text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mt-1 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
                                     Taxi Service
                                 </span>
                             </h1>
