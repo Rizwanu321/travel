@@ -5,7 +5,7 @@ import { Phone, MessageCircle, MapPin, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { contactInfo } from '@/lib/data';
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 const quickActions = [
     {

@@ -24,7 +24,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { companyInfo } from '@/lib/data';
 
-const WHATSAPP_NUMBER = '917558002009'; // +91 7558002009
+const WHATSAPP_NUMBER = '919061883919'; // +91 90618 83919
 
 // Quick service highlights
 const services = [

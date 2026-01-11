@@ -11,9 +11,9 @@ export const companyInfo = {
 };
 
 export const contactInfo: ContactInfo = {
-    phone: '+91 7558002009',
-    whatsapp: '917558002009',
-    email: 'info@keralatours.com',
+    phone: '+91 90618 83919',
+    whatsapp: '919061883919',
+    email: 'mdraffi114@gmail.com',
     address: 'Pattambi, Palakkad, Kerala 679303',
     googleMapsUrl: 'https://maps.google.com/?q=Pattambi,Palakkad,Kerala',
 };

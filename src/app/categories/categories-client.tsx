@@ -72,7 +72,7 @@ const categoryDetails: Record<string, { features: string[]; description: string 
     },
 };
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 export function CategoriesPageClient() {
     const handleEnquiry = (categoryName: string) => {
@@ -255,11 +255,11 @@ export function CategoriesPageClient() {
                                 Chat on WhatsApp
                             </Button>
                             <Button
-                                onClick={() => window.location.href = 'tel:+917558002009'}
+                                onClick={() => window.location.href = 'tel:+919061883919'}
                                 className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border-2 border-white/50 h-12 px-8 text-base rounded-xl font-semibold"
                             >
                                 <Phone className="h-5 w-5 mr-2" />
-                                Call +91 7558002009
+                                Call +91 90618 83919
                             </Button>
                         </div>
                     </motion.div>

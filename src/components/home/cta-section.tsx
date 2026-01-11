@@ -9,7 +9,7 @@ export function CTASection() {
     const features = [
         { icon: Clock, text: '24/7 Availability' },
         { icon: Shield, text: 'Safe & Reliable' },
-        { icon: Car, text: '50+ Vehicles' },
+        { icon: Car, text: 'All Type of Vehicles' },
         { icon: MapPin, text: 'All Kerala Coverage' },
     ];
 
@@ -100,7 +100,7 @@ export function CTASection() {
                                 className="bg-white text-emerald-700 hover:bg-gray-100 font-semibold h-14 px-8 text-base rounded-xl shadow-lg w-full sm:w-auto"
                             >
                                 <Phone className="h-5 w-5 mr-2" />
-                                Call +91 7558002009
+                                Call +91 90618 83919
                             </Button>
                         </a>
                     </div>

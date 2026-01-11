@@ -37,7 +37,7 @@ const socialLinks = [
     { icon: Youtube, href: 'https://youtube.com', label: 'Youtube', color: 'hover:bg-red-600' },
 ];
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 export function Footer() {
     const handleWhatsApp = () => {

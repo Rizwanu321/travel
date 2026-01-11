@@ -5,13 +5,11 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
     ArrowLeft,
-    Clock,
     Star,
     MapPin,
     Check,
     Phone,
     MessageCircle,
-    Calendar,
     Users,
     Shield,
     Award,
@@ -21,14 +19,15 @@ import {
     Home,
     Camera,
     Share2,
-    Heart
+    Heart,
+    Clock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { packages, contactInfo } from '@/lib/data';
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 export default function PackageDetailsPage() {
     const params = useParams();
@@ -63,20 +62,14 @@ export default function PackageDetailsPage() {
         );
     }
 
-    const discount = pkg.originalPrice
-        ? Math.round(((pkg.originalPrice - pkg.price) / pkg.originalPrice) * 100)
-        : 0;
-
     const handleBookNow = () => {
         const message = `🌴 *Package Enquiry*
 ━━━━━━━━━━━━━━━━━━━━━
 
 📦 *Package:* ${pkg.name}
 📍 *Destination:* ${pkg.destination}
-⏰ *Duration:* ${pkg.duration}
-💰 *Price:* ₹${pkg.price.toLocaleString()}
 
-Hi! I'm interested in booking this package. Please share more details.
+Hi! I'm interested in booking this package. Please share pricing and more details.
 
 ━━━━━━━━━━━━━━━━━━━━━
 _Sent from Kerala Tours Website_`;
@@ -86,7 +79,7 @@ _Sent from Kerala Tours Website_`;
     };
 
     const handleCall = () => {
-        window.location.href = `tel:+917558002009`;
+        window.location.href = `tel:+919061883919`;
     };
 
     const handleShare = async () => {
@@ -139,11 +132,6 @@ _Sent from Kerala Tours Website_`;
                             ⭐ Featured
                         </Badge>
                     )}
-                    {discount > 0 && (
-                        <Badge className="bg-red-500 text-white border-0 shadow-lg px-3 py-1">
-                            {discount}% OFF
-                        </Badge>
-                    )}
                 </div>
 
                 {/* Title on Image */}
@@ -156,10 +144,6 @@ _Sent from Kerala Tours Website_`;
                             {pkg.destination}
                         </h1>
                         <div className="flex flex-wrap items-center gap-4 text-white/90">
-                            <span className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm">
-                                <Clock className="h-4 w-4" />
-                                {pkg.duration}
-                            </span>
                             <span className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm">
                                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                                 4.8 (120 reviews)
@@ -200,29 +184,19 @@ _Sent from Kerala Tours Website_`;
                             className="lg:hidden"
                         >
                             <Card className="shadow-lg border-0 overflow-hidden">
-                                {/* Price Header */}
+                                {/* Header */}
                                 <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white">
-                                    <p className="text-sm text-white/80 mb-1">Starting from</p>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-3xl font-bold">
-                                            ₹{pkg.price.toLocaleString()}
-                                        </span>
-                                        {pkg.originalPrice && (
-                                            <span className="text-base text-white/60 line-through">
-                                                ₹{pkg.originalPrice.toLocaleString()}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-sm text-white/80 mt-1">per person</p>
+                                    <h3 className="text-xl font-bold">Book This Package</h3>
+                                    <p className="text-sm text-white/80 mt-1">Contact us for best prices</p>
                                 </div>
 
                                 <CardContent className="p-4">
                                     {/* Quick Info Grid */}
                                     <div className="grid grid-cols-3 gap-3 mb-4">
                                         <div className="text-center p-3 bg-gray-50 rounded-xl">
-                                            <Calendar className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
-                                            <p className="text-xs text-gray-500">Duration</p>
-                                            <p className="text-sm font-semibold text-gray-900">{pkg.duration.split('/')[0].trim()}</p>
+                                            <Star className="h-5 w-5 text-amber-500 mx-auto mb-1" />
+                                            <p className="text-xs text-gray-500">Rating</p>
+                                            <p className="text-sm font-semibold text-gray-900">4.8 ★</p>
                                         </div>
                                         <div className="text-center p-3 bg-gray-50 rounded-xl">
                                             <MapPin className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
@@ -251,7 +225,7 @@ _Sent from Kerala Tours Website_`;
                                             className="w-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 h-12 rounded-xl"
                                         >
                                             <Phone className="h-5 w-5 mr-2" />
-                                            Call +91 7558002009
+                                            Call +91 90618 83919
                                         </Button>
                                     </div>
 
@@ -384,13 +358,11 @@ _Sent from Kerala Tours Website_`;
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                                     <div className="absolute bottom-2 left-2 text-white">
                                                         <div className="font-bold">{similar.destination}</div>
-                                                        <div className="text-xs text-white/80">{similar.duration}</div>
+                                                        <div className="text-xs text-white/80 flex items-center gap-1"><Star className="h-3 w-3 fill-amber-400 text-amber-400" /> 4.8</div>
                                                     </div>
                                                 </div>
                                                 <div className="p-3">
-                                                    <div className="text-emerald-600 font-bold">
-                                                        ₹{similar.price.toLocaleString()}
-                                                    </div>
+                                                    <div className="text-emerald-600 font-semibold text-sm">View Details →</div>
                                                 </div>
                                             </div>
                                         </Link>
@@ -409,32 +381,22 @@ _Sent from Kerala Tours Website_`;
                             className="sticky top-24"
                         >
                             <Card className="shadow-xl border-0 overflow-hidden">
-                                {/* Price Header */}
+                                {/* Header */}
                                 <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-5 text-white">
-                                    <p className="text-sm text-white/80 mb-1">Starting from</p>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-bold">
-                                            ₹{pkg.price.toLocaleString()}
-                                        </span>
-                                        {pkg.originalPrice && (
-                                            <span className="text-lg text-white/60 line-through">
-                                                ₹{pkg.originalPrice.toLocaleString()}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-sm text-white/80 mt-1">per person</p>
+                                    <h3 className="text-2xl font-bold">Book This Package</h3>
+                                    <p className="text-sm text-white/80 mt-1">Contact us for best prices</p>
                                 </div>
 
                                 <CardContent className="p-5">
                                     {/* Quick Info */}
                                     <div className="space-y-4 mb-6">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                                                <Calendar className="h-5 w-5 text-gray-600" />
+                                            <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                                                <Star className="h-5 w-5 text-amber-600" />
                                             </div>
                                             <div>
-                                                <p className="text-xs text-gray-500">Duration</p>
-                                                <p className="font-medium text-gray-900">{pkg.duration}</p>
+                                                <p className="text-xs text-gray-500">Rating</p>
+                                                <p className="font-medium text-gray-900">4.8 ★ (120 reviews)</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-3">
@@ -472,7 +434,7 @@ _Sent from Kerala Tours Website_`;
                                             className="w-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 h-14 rounded-xl text-base"
                                         >
                                             <Phone className="h-5 w-5 mr-2" />
-                                            Call +91 7558002009
+                                            Call +91 90618 83919
                                         </Button>
                                     </div>
 
@@ -502,17 +464,8 @@ _Sent from Kerala Tours Website_`;
             <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-50 safe-area-inset-bottom">
                 <div className="flex items-center gap-3 p-4">
                     <div className="flex-1">
-                        <p className="text-xs text-gray-500">Starting from</p>
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-bold text-emerald-600">
-                                ₹{pkg.price.toLocaleString()}
-                            </span>
-                            {pkg.originalPrice && (
-                                <span className="text-sm text-gray-400 line-through">
-                                    ₹{pkg.originalPrice.toLocaleString()}
-                                </span>
-                            )}
-                        </div>
+                        <p className="font-semibold text-gray-900 line-clamp-1">{pkg.name}</p>
+                        <p className="text-xs text-gray-500">Contact us for best prices</p>
                     </div>
                     <Button
                         onClick={handleBookNow}

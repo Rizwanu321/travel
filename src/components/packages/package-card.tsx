@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Clock, Star, ArrowRight, Sparkles } from 'lucide-react';
+import { Star, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Package } from '@/types';
 
@@ -12,10 +12,6 @@ interface PackageCardProps {
 }
 
 export function PackageCard({ package_: pkg, index = 0 }: PackageCardProps) {
-    const discount = pkg.originalPrice
-        ? Math.round(((pkg.originalPrice - pkg.price) / pkg.originalPrice) * 100)
-        : 0;
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -46,11 +42,6 @@ export function PackageCard({ package_: pkg, index = 0 }: PackageCardProps) {
                                         Featured
                                     </span>
                                 )}
-                                {discount > 0 && (
-                                    <span className="px-2.5 py-1 bg-red-500 text-white text-xs font-semibold rounded-full shadow-lg">
-                                        {discount}% OFF
-                                    </span>
-                                )}
                             </div>
                         </div>
 
@@ -60,10 +51,6 @@ export function PackageCard({ package_: pkg, index = 0 }: PackageCardProps) {
                                 {pkg.destination}
                             </h3>
                             <div className="flex items-center gap-3 text-white/90 text-sm">
-                                <span className="flex items-center gap-1">
-                                    <Clock className="h-4 w-4" />
-                                    {pkg.duration}
-                                </span>
                                 <span className="flex items-center gap-1">
                                     <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                                     4.8
@@ -96,26 +83,13 @@ export function PackageCard({ package_: pkg, index = 0 }: PackageCardProps) {
                             ))}
                         </div>
 
-                        {/* Price and CTA */}
-                        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                            <div>
-                                <p className="text-xs text-gray-400 mb-0.5">Starting from</p>
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-xl font-bold text-emerald-600">
-                                        ₹{pkg.price.toLocaleString()}
-                                    </span>
-                                    {pkg.originalPrice && (
-                                        <span className="text-sm text-gray-400 line-through">
-                                            ₹{pkg.originalPrice.toLocaleString()}
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
+                        {/* CTA */}
+                        <div className="flex items-center justify-end pt-3 border-t border-gray-100">
                             <Button
                                 size="sm"
                                 className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-4 h-9 group-hover:shadow-md transition-all"
                             >
-                                Book Now
+                                View Details
                                 <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
                             </Button>
                         </div>

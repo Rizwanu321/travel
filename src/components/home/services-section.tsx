@@ -28,7 +28,7 @@ const serviceColors: Record<string, string> = {
     'Round Trip': 'from-indigo-500 to-violet-600',
 };
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 export function ServicesSection() {
     const handleEnquiry = (serviceName: string) => {

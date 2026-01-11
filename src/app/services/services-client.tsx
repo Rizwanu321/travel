@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { vehicles } from '@/lib/data';
 import Link from 'next/link';
 
-const WHATSAPP_NUMBER = '917558002009';
+const WHATSAPP_NUMBER = '919061883919';
 
 // Service types we offer
 const serviceTypes = [
@@ -282,12 +282,12 @@ _Sent from Kerala Tours Website_`;
                                 Book via WhatsApp
                             </Button>
                             <Button
-                                onClick={() => window.location.href = 'tel:+917558002009'}
+                                onClick={() => window.location.href = 'tel:+919061883919'}
                                 variant="outline"
                                 className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 h-12 px-8 text-base rounded-xl"
                             >
                                 <Phone className="h-5 w-5 mr-2" />
-                                Call +91 7558002009
+                                Call +91 90618 83919
                             </Button>
                         </div>
                     </motion.div>
