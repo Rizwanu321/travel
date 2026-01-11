@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
     MapPin,
@@ -40,6 +40,70 @@ const trustBadges = [
     { icon: Clock, label: '24/7 Available' },
     { icon: Star, label: '5000+ Happy Customers' },
 ];
+
+// Typewriter Heading Component with Loop
+function TypewriterHeading() {
+    const [animationKey, setAnimationKey] = useState(0);
+
+    useEffect(() => {
+        // Reset animation every 5 seconds (2s for typing + 3s pause)
+        const interval = setInterval(() => {
+            setAnimationKey(prev => prev + 1);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <motion.div
+            key={animationKey}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+        >
+            <h1 className="leading-tight">
+                {/* Kerala Tours - Typewriter */}
+                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                    {"Kerala Tours".split("").map((letter, index) => (
+                        <motion.span
+                            key={`${animationKey}-kerala-${index}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                                delay: 0.2 + index * 0.06,
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }}
+                            className="inline-block bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent"
+                            style={{ minWidth: letter === " " ? "0.3em" : "auto" }}
+                        >
+                            {letter === " " ? "\u00A0" : letter}
+                        </motion.span>
+                    ))}
+                </span>
+                {/* Taxi Service - Typewriter */}
+                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                    {"Taxi Service".split("").map((letter, index) => (
+                        <motion.span
+                            key={`${animationKey}-taxi-${index}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                                delay: 1.0 + index * 0.06,
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }}
+                            className="inline-block"
+                            style={{ minWidth: letter === " " ? "0.3em" : "auto" }}
+                        >
+                            {letter === " " ? "\u00A0" : letter}
+                        </motion.span>
+                    ))}
+                </span>
+            </h1>
+        </motion.div>
+    );
+}
 
 export function HeroSection() {
     const [formData, setFormData] = useState({
@@ -165,21 +229,8 @@ _Sent from ${companyInfo.name} Website_`;
                             <span className="text-emerald-100 font-semibold">Best Travel Agency in Kerala</span>
                         </motion.div>
 
-                        {/* Main Heading - Larger on Mobile, Normal on Desktop */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                        >
-                            <h1 className="leading-tight">
-                                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-                                    Kerala Tours
-                                </span>
-                                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
-                                    Taxi Service
-                                </span>
-                            </h1>
-                        </motion.div>
+                        {/* Main Heading with Looping Typewriter Effect */}
+                        <TypewriterHeading />
 
                         {/* Tagline - More Prominent on Mobile, Normal on Desktop */}
                         <motion.p
