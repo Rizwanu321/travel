@@ -63,7 +63,7 @@ function TypewriterHeading() {
         >
             <h1 className="leading-tight">
                 {/* Kerala Tours - Typewriter */}
-                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black lg:font-extrabold drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
                     {"Kerala Tours".split("").map((letter, index) => (
                         <motion.span
                             key={`${animationKey}-kerala-${index}`}
@@ -82,7 +82,7 @@ function TypewriterHeading() {
                     ))}
                 </span>
                 {/* Taxi Service - Typewriter */}
-                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold lg:font-bold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
                     {"Taxi Service".split("").map((letter, index) => (
                         <motion.span
                             key={`${animationKey}-taxi-${index}`}
