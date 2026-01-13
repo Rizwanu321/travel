@@ -192,21 +192,26 @@ export function ContactPageClient() {
                                 <div className="h-64 md:h-80 relative overflow-hidden">
                                     <img
                                         src="/images/contact_office.png"
-                                        alt="Kerala Tours Office"
+                                        alt="Golden Globe Office"
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                        <Badge className="bg-emerald-500 text-white border-0 mb-3">
+                                        <Badge className="bg-amber-500 text-white border-0 mb-3">
                                             Head Office
                                         </Badge>
-                                        <h3 className="text-xl md:text-2xl font-bold mb-2">{companyInfo.name}</h3>
-                                        <p className="text-white/90 mb-3">{contactInfo.address}</p>
+                                        <h3 className="text-xl md:text-2xl font-bold mb-1">{companyInfo.name}</h3>
+                                        <div className="mb-4 space-y-1.5 bg-black/40 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                                            <p className="text-amber-300 text-sm font-semibold tracking-wide">Prop: {contactInfo.owner}</p>
+                                            <p className="text-gray-200 text-sm font-medium">{contactInfo.locationDescription}</p>
+                                            <div className="h-px bg-white/20 my-2" />
+                                            <p className="text-white text-sm leading-relaxed opacity-90">{contactInfo.address}</p>
+                                        </div>
                                         <a
                                             href={contactInfo.googleMapsUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30 transition-colors"
+                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2.5 rounded-lg hover:from-amber-600 hover:to-amber-700 transition-all shadow-lg font-medium text-sm"
                                         >
                                             <Navigation className="h-4 w-4" />
                                             Open in Google Maps
@@ -253,7 +258,7 @@ export function ContactPageClient() {
                             <Card className="border-0 shadow-xl">
                                 <CardContent className="p-6 md:p-8">
                                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                                        Why Choose Kerala Tours?
+                                        Why Choose Golden Globe?
                                     </h3>
                                     <p className="text-gray-600 mb-6">
                                         {companyInfo.description}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import LoadingProvider from "@/components/providers/loading-provider";
 import { Header, Footer, MobileNav } from "@/components/layout";
 
 const outfit = Outfit({
@@ -45,9 +46,9 @@ export const metadata: Metadata = {
     "best cab service",
     "tour operators Kerala",
   ],
-  authors: [{ name: "Kerala Tours" }],
-  creator: "Kerala Tours",
-  publisher: "Kerala Tours",
+  authors: [{ name: "Golden Globe" }],
+  creator: "Golden Globe",
+  publisher: "Golden Globe",
   formatDetection: {
     email: false,
     telephone: true,
@@ -60,8 +61,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://keralatravel.vercel.app",
-    siteName: "Kerala Tours",
-    title: "Kerala Tours | Best Taxi Service & Travel Agency in Kerala",
+    siteName: "Golden Globe",
+    title: "Golden Globe | Best Taxi Service & Travel Agency in Kerala",
     description:
       "Book affordable cab services in Kerala. City tours, airport taxi, round trips, self-drive cars. Explore Goa, Munnar, Mysore, Bekal with 33+ tour packages.",
     images: [
@@ -69,17 +70,17 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Kerala Tours - Best Travel Agency",
+        alt: "Golden Globe - Best Travel Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kerala Tours | Best Taxi Service & Travel Agency in Kerala",
+    title: "Golden Globe | Best Taxi Service & Travel Agency in Kerala",
     description:
       "Book affordable cab services in Kerala. City tours, airport taxi, round trips, self-drive cars.",
     images: ["/og-image.jpg"],
-    creator: "@keralatours",
+    creator: "@goldenglobe",
   },
   robots: {
     index: true,
@@ -93,9 +94,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: "/images/logo.png?v=7",
+    shortcut: "/images/logo.png?v=7",
+    apple: "/images/logo.png?v=7",
   },
   manifest: "/site.webmanifest",
 };
@@ -111,10 +112,12 @@ export default function RootLayout({
         className={`${outfit.variable} ${inter.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Providers>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <MobileNav />
+          <LoadingProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <MobileNav />
+          </LoadingProvider>
         </Providers>
       </body>
     </html>

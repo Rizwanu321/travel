@@ -87,11 +87,11 @@ export function Footer() {
                         className="lg:col-span-2 space-y-4"
                     >
                         <div className="flex items-center gap-3">
-                            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl shadow-lg border border-white/5">
+                            <div className="relative h-20 w-20 shrink-0 overflow-hidden">
                                 <img
-                                    src="/images/logo.png"
+                                    src="/images/logo.png?v=7"
                                     alt="Golden Globe Logo"
-                                    className="object-cover w-full h-full"
+                                    className="object-contain w-full h-full"
                                 />
                             </div>
                             <div>

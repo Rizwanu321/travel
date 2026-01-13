@@ -50,11 +50,11 @@ export function Header() {
                     <div className="flex h-16 items-center justify-between">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl shadow-sm">
+                            <div className="relative h-14 w-14 shrink-0 overflow-hidden">
                                 <img
-                                    src="/images/logo.png"
+                                    src="/images/logo.png?v=7"
                                     alt="Golden Globe Logo"
-                                    className="object-cover w-full h-full"
+                                    className="object-contain w-full h-full"
                                 />
                             </div>
                             <div className="flex flex-col">
@@ -105,7 +105,7 @@ export function Header() {
                                         <div className="flex items-center gap-3">
                                             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl shadow-md border border-white/10 bg-black/20">
                                                 <img
-                                                    src="/images/logo.png"
+                                                    src="/images/logo.png?v=7"
                                                     alt="Golden Globe Logo"
                                                     className="object-cover w-full h-full"
                                                 />

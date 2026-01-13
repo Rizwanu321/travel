@@ -7,15 +7,17 @@ export const companyInfo = {
     tagline: 'Best Travel Agency',
     slogan: 'From where you are to where you want me to be',
     description: 'We offer best cab services at affordable price. We offer city tours, airport taxi service, round trip cabs, self drive cars etc... more details get in touch with us or book your cab now.',
-    locations: ['Kerala Tours', 'Taxi Services', 'Pattambi', 'Palakkad'],
+    locations: ['Golden Globe', 'Taxi Services', 'Pattambi', 'Palakkad'],
 };
 
 export const contactInfo: ContactInfo = {
     phone: '+91 9061883919',
     whatsapp: '919061883919',
     email: 'mdraffi114@gmail.com',
-    address: 'Pattambi, Palakkad, Kerala 679303',
-    googleMapsUrl: 'https://maps.google.com/?q=Pattambi,Palakkad,Kerala',
+    owner: 'Muhammed Raffi R',
+    address: 'Pallath house, Maruthur post, Pattambi, Palakkad district - 679306',
+    locationDescription: 'Infront of Sevana Hospital, near Pattambi',
+    googleMapsUrl: 'https://maps.app.goo.gl/nC2GSje1pVNpuHrDA',
 };
 
 export const packages: Package[] = [

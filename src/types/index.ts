@@ -74,5 +74,7 @@ export interface ContactInfo {
   whatsapp: string;
   email: string;
   address: string;
+  locationDescription?: string;
+  owner?: string;
   googleMapsUrl: string;
 }
