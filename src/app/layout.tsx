@@ -28,8 +28,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Kerala Tours | Best Taxi Service & Travel Agency in Kerala",
-    template: "%s | Kerala Tours",
+    default: "Golden Globe | Best Taxi Service & Travel Agency in Kerala",
+    template: "%s | Golden Globe Tour Taxi Service",
   },
   description:
     "Book affordable cab services in Kerala. City tours, airport taxi, round trips, self-drive cars. Explore Goa, Munnar, Mysore, Bekal with 33+ tour packages. Pattambi, Palakkad.",
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
     email: false,
     telephone: true,
   },
-  metadataBase: new URL("https://keralatours.com"),
+  metadataBase: new URL("https://keralatravel.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://keralatours.com",
+    url: "https://keralatravel.vercel.app",
     siteName: "Kerala Tours",
     title: "Kerala Tours | Best Taxi Service & Travel Agency in Kerala",
     description:
@@ -93,9 +93,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
   },
   manifest: "/site.webmanifest",
 };

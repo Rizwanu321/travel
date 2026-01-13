@@ -63,8 +63,8 @@ function TypewriterHeading() {
         >
             <h1 className="leading-tight">
                 {/* Kerala Tours - Typewriter */}
-                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black lg:font-extrabold drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-                    {"Kerala Tours".split("").map((letter, index) => (
+                <span className="block text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black lg:font-extrabold drop-shadow-2xl p-1" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                    {"Golden Globe".split("").map((letter, index) => (
                         <motion.span
                             key={`${animationKey}-kerala-${index}`}
                             initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ function TypewriterHeading() {
                                 duration: 0.3,
                                 ease: "easeOut"
                             }}
-                            className="inline-block bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent"
+                            className="inline-block bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent pb-2"
                             style={{ minWidth: letter === " " ? "0.3em" : "auto" }}
                         >
                             {letter === " " ? "\u00A0" : letter}
@@ -82,8 +82,8 @@ function TypewriterHeading() {
                     ))}
                 </span>
                 {/* Taxi Service - Typewriter */}
-                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold lg:font-bold text-white mt-1 md:mt-2 drop-shadow-xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
-                    {"Taxi Service".split("").map((letter, index) => (
+                <span className="block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold lg:font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 mt-1 md:mt-2 drop-shadow-xl p-1" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                    {"Tour Taxi Service".split("").map((letter, index) => (
                         <motion.span
                             key={`${animationKey}-taxi-${index}`}
                             initial={{ opacity: 0, y: 20 }}
@@ -223,10 +223,10 @@ _Sent from ${companyInfo.name} Website_`;
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 backdrop-blur-md rounded-full text-xs md:text-sm font-medium border border-emerald-400/40 shadow-lg"
+                            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 backdrop-blur-md rounded-full text-xs md:text-sm font-medium border border-amber-400/30 shadow-lg"
                         >
-                            <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4 text-yellow-400" />
-                            <span className="text-emerald-100 font-semibold">Best Travel Agency in Kerala</span>
+                            <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4 text-amber-400" />
+                            <span className="text-amber-200 font-semibold">Best Travel Agency in Kerala</span>
                         </motion.div>
 
                         {/* Main Heading with Looping Typewriter Effect */}

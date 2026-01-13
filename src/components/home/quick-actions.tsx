@@ -41,8 +41,8 @@ const quickActions = [
         onClick: () => {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Kerala Tours Taxi Service',
-                    text: 'Check out Kerala Tours for best cab services at affordable prices!',
+                    title: 'Golden Globe Tour Taxi Service',
+                    text: 'Check out Golden Globe Tour Taxi Service for best cab services at affordable prices!',
                     url: window.location.href,
                 });
             } else {

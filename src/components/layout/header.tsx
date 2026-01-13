@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { companyInfo, contactInfo } from '@/lib/data';
 
@@ -49,14 +50,13 @@ export function Header() {
                     <div className="flex h-16 items-center justify-between">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2">
-                            <motion.div
-                                initial={{ rotate: 0 }}
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                className="h-10 w-10 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-lg shadow-lg"
-                            >
-                                KT
-                            </motion.div>
+                            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl shadow-sm">
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Golden Globe Logo"
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
                             <div className="flex flex-col">
                                 <span className="font-bold text-lg text-gradient leading-tight">{companyInfo.name}</span>
                                 <span className="text-[10px] text-muted-foreground leading-tight">{companyInfo.tagline}</span>
@@ -103,8 +103,12 @@ export function Header() {
                                     {/* Mobile menu header */}
                                     <div className="gradient-primary p-6 text-white">
                                         <div className="flex items-center gap-3">
-                                            <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-xl">
-                                                KT
+                                            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl shadow-md border border-white/10 bg-black/20">
+                                                <img
+                                                    src="/images/logo.png"
+                                                    alt="Golden Globe Logo"
+                                                    className="object-cover w-full h-full"
+                                                />
                                             </div>
                                             <div>
                                                 <div className="font-bold text-lg">{companyInfo.name}</div>

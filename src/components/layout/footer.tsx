@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Youtube, MessageCircle, ArrowRight } from 'lucide-react';
 import { companyInfo, contactInfo } from '@/lib/data';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 const footerLinks = {
     services: [
@@ -86,8 +87,12 @@ export function Footer() {
                         className="lg:col-span-2 space-y-4"
                     >
                         <div className="flex items-center gap-3">
-                            <div className="h-12 w-12 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                                KT
+                            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl shadow-lg border border-white/5">
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Golden Globe Logo"
+                                    className="object-cover w-full h-full"
+                                />
                             </div>
                             <div>
                                 <div className="font-bold text-xl text-white">{companyInfo.name}</div>

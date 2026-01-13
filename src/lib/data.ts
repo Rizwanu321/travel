@@ -3,7 +3,7 @@
 import { Package, Vehicle, Service, Category, Review, ContactInfo } from '@/types';
 
 export const companyInfo = {
-    name: 'Kerala Tours',
+    name: 'Golden Globe Tour Taxi Service',
     tagline: 'Best Travel Agency',
     slogan: 'From where you are to where you want me to be',
     description: 'We offer best cab services at affordable price. We offer city tours, airport taxi service, round trip cabs, self drive cars etc... more details get in touch with us or book your cab now.',
@@ -11,7 +11,7 @@ export const companyInfo = {
 };
 
 export const contactInfo: ContactInfo = {
-    phone: '+91 90618 83919',
+    phone: '+91 9061883919',
     whatsapp: '919061883919',
     email: 'mdraffi114@gmail.com',
     address: 'Pattambi, Palakkad, Kerala 679303',
