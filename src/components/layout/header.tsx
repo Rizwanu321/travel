@@ -50,7 +50,7 @@ export function Header() {
                     <div className="flex h-16 items-center justify-between">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="relative h-14 w-14 shrink-0 overflow-hidden">
+                            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-[#050505] p-1.5 shadow-sm">
                                 <img
                                     src="/images/logo.png?v=7"
                                     alt="Golden Globe Logo"
