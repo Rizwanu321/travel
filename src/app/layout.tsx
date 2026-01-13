@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Outfit, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import LoadingProvider from "@/components/providers/loading-provider";
@@ -13,6 +13,12 @@ const outfit = Outfit({
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
@@ -109,7 +115,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${inter.variable} font-sans antialiased min-h-screen flex flex-col`}
+        className={`${outfit.variable} ${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Providers>
           <LoadingProvider>
