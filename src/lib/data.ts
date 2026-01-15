@@ -156,20 +156,8 @@ export const packages: Package[] = [
         image: '/images/package_goa_beach.png',
         description: 'Experience the vibrant beaches, nightlife, and Portuguese heritage of Goa.',
         highlights: ['Beach hopping', 'Water sports', 'Night markets', 'Church visits'],
-        category: 'domestic',
+        category: 'outside-kerala',
         featured: true,
-    },
-    {
-        id: 'north-goa-adventure',
-        name: 'North Goa Adventure',
-        destination: 'Goa',
-        duration: '3 Days / 2 Nights',
-        price: 11999,
-        originalPrice: 14999,
-        image: '/images/package_goa_beach.png',
-        description: 'Explore the famous beaches and nightlife of North Goa.',
-        highlights: ['Baga Beach', 'Calangute', 'Anjuna Market', 'Cruise'],
-        category: 'domestic',
     },
     // OUTSIDE KERALA PACKAGES
     {
@@ -270,19 +258,7 @@ export const packages: Package[] = [
         highlights: ['French Colony', 'Auroville', 'Paradise Beach', 'Cafes'],
         category: 'outside-kerala',
     },
-    // DOMESTIC TOUR PACKAGES
-    {
-        id: 'andaman-islands-escape',
-        name: 'Andaman Island Escape',
-        destination: 'Andaman',
-        duration: '5 Days / 4 Nights',
-        price: 32999,
-        originalPrice: 39999,
-        image: '/images/package_andaman_islands.png',
-        description: 'Crystal clear waters and pristine beaches of the Andaman Islands.',
-        highlights: ['Havelock Island', 'Cellular Jail', 'Scuba diving', 'Beach camping'],
-        category: 'domestic',
-    },
+
     // COMPLETE KERALA TOUR
     {
         id: 'complete-kerala-tour',
@@ -784,7 +760,7 @@ export const categories: Category[] = [
         name: 'Tour Packages',
         description: 'Curated tour packages for all destinations',
         icon: 'Package',
-        count: 49,
+        count: 47,
         image: '/images/destination_munnar.png',
     },
     {
@@ -1056,7 +1032,7 @@ export const photoCategories = [
 ];
 
 export const stats = {
-    totalPackages: 49,
+    totalPackages: 47,
     happyCustomers: 5000,
     yearsExperience: 10,
     vehiclesAvailable: 50,

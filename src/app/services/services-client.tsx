@@ -21,14 +21,13 @@ const serviceTypes = [
 ];
 
 export function ServicesPageClient() {
-    const handleBookVehicle = (vehicleName: string, pricePerKm: number) => {
+    const handleBookVehicle = (vehicleName: string) => {
         const message = `🚗 *Vehicle Booking Request*
 ━━━━━━━━━━━━━━━━━━━━━
 
 🚙 *Vehicle:* ${vehicleName}
-💰 *Rate:* ₹${pricePerKm}/km
 
-Hi! I want to book this vehicle. Please share availability and booking details.
+Hi! I want to book this vehicle. Please share availability, rates, and booking details.
 
 ━━━━━━━━━━━━━━━━━━━━━
 _Sent from Kerala Tours Website_`;
@@ -171,13 +170,8 @@ _Sent from Kerala Tours Website_`;
 
                                     <CardContent className="p-4">
                                         {/* Vehicle Name */}
-                                        <h3 className="font-bold text-lg text-gray-900 mb-2">{vehicle.name}</h3>
+                                        <h3 className="font-bold text-lg text-gray-900 mb-3">{vehicle.name}</h3>
 
-                                        {/* Price */}
-                                        <div className="flex items-baseline gap-1 mb-3">
-                                            <span className="text-2xl font-bold text-emerald-600">₹{vehicle.pricePerKm}</span>
-                                            <span className="text-sm text-gray-500">/km</span>
-                                        </div>
 
                                         {/* Specs */}
                                         <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
@@ -201,10 +195,9 @@ _Sent from Kerala Tours Website_`;
                                             ))}
                                         </div>
 
-                                        {/* Book Button */}
                                         <Button
                                             className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white h-11 rounded-xl"
-                                            onClick={() => handleBookVehicle(vehicle.name, vehicle.pricePerKm)}
+                                            onClick={() => handleBookVehicle(vehicle.name)}
                                         >
                                             <MessageCircle className="h-4 w-4 mr-2" />
                                             Book Now

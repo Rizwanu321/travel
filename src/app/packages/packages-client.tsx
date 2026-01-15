@@ -12,7 +12,6 @@ import { packages } from '@/lib/data';
 const categories = [
     { id: 'all', label: 'All' },
     { id: 'kerala', label: 'Kerala' },
-    { id: 'domestic', label: 'Domestic' },
     { id: 'outside-kerala', label: 'Outside Kerala' },
     { id: 'pilgrimage', label: 'Pilgrimage' },
 ];
