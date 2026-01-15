@@ -31,7 +31,6 @@ const services = [
     { icon: Car, label: 'City Tours' },
     { icon: Plane, label: 'Airport Taxi' },
     { icon: Map, label: 'Round Trips' },
-    { icon: Navigation, label: 'Self Drive' },
 ];
 
 // Trust badges
@@ -251,7 +250,7 @@ _Sent from ${companyInfo.name} Website_`;
                             className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl drop-shadow-md font-medium"
                         >
                             We offer <span className="text-emerald-300 font-medium">best cab services at affordable prices</span>.
-                            Experience city tours, airport taxi service, round trips, self-drive cars, and more.
+                            Experience city tours, airport taxi service, round trips, and more.
                             Get in touch with us or book your cab now!
                         </motion.p>
 
