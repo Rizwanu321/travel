@@ -10,7 +10,7 @@ export interface Package {
   image: string;
   description: string;
   highlights: string[];
-  category: 'domestic' | 'kerala' | 'outside-kerala';
+  category: 'domestic' | 'kerala' | 'outside-kerala' | 'pilgrimage';
   featured?: boolean;
 }
 
@@ -52,6 +52,7 @@ export interface Review {
   comment: string;
   date: string;
   helpful?: number;
+  country?: string;
 }
 
 export interface Photo {

@@ -1,12 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ThumbsUp, Quote, MapPin } from 'lucide-react';
+import { Star, ThumbsUp, Quote, MapPin, Globe, Filter } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { reviews } from '@/lib/data';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 
 function StarRating({ rating }: { rating: number }) {
     return (
@@ -25,14 +32,53 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function ReviewsPageClient() {
-    const [filterLocation, setFilterLocation] = useState<string | null>(null);
+    const [filterCountry, setFilterCountry] = useState<string>('all');
+    const [filterRating, setFilterRating] = useState<string>('all');
+    const [sortBy, setSortBy] = useState<string>('recent');
 
-    const locations = [...new Set(reviews.map((r) => r.location))];
-    const filteredReviews = filterLocation
-        ? reviews.filter((r) => r.location === filterLocation)
-        : reviews;
+    // Get unique countries
+    const countries = useMemo(() => {
+        const uniqueCountries = [...new Set(reviews.map((r) => r.country || 'India'))];
+        return uniqueCountries.sort();
+    }, []);
+
+    // Filter and sort reviews
+    const filteredReviews = useMemo(() => {
+        let filtered = reviews;
+
+        // Filter by country
+        if (filterCountry !== 'all') {
+            filtered = filtered.filter((r) => (r.country || 'India') === filterCountry);
+        }
+
+        // Filter by rating
+        if (filterRating !== 'all') {
+            filtered = filtered.filter((r) => r.rating === parseInt(filterRating));
+        }
+
+        // Sort
+        if (sortBy === 'recent') {
+            filtered = [...filtered].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        } else if (sortBy === 'helpful') {
+            filtered = [...filtered].sort((a, b) => (b.helpful || 0) - (a.helpful || 0));
+        } else if (sortBy === 'rating') {
+            filtered = [...filtered].sort((a, b) => b.rating - a.rating);
+        }
+
+        return filtered;
+    }, [filterCountry, filterRating, sortBy]);
 
     const avgRating = reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
+
+    // Count reviews by country
+    const countryStats = useMemo(() => {
+        const stats: Record<string, number> = {};
+        reviews.forEach((r) => {
+            const country = r.country || 'India';
+            stats[country] = (stats[country] || 0) + 1;
+        });
+        return stats;
+    }, []);
 
     return (
         <div className="min-h-screen">
@@ -46,11 +92,11 @@ export function ReviewsPageClient() {
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                             <Star className="h-4 w-4 fill-white" />
-                            <span>Customer Reviews</span>
+                            <span>Global Customer Reviews</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">What Our Travelers Say</h1>
                         <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                            Real reviews from real travelers who experienced our services across Kerala and beyond.
+                            Real reviews from travelers worldwide who experienced Kerala with Golden Globe Tours.
                         </p>
 
                         {/* Overall Rating */}
@@ -61,50 +107,90 @@ export function ReviewsPageClient() {
                                     <Star key={star} className="h-6 w-6 fill-amber-400 text-amber-400" />
                                 ))}
                             </div>
-                            <div className="text-sm text-white/70">Based on {reviews.length * 100}+ reviews</div>
+                            <div className="text-sm text-white/70">Based on {reviews.length} verified reviews</div>
+                        </div>
+
+                        {/* International Customers Badge */}
+                        <div className="mt-8 flex flex-wrap justify-center gap-4">
+                            <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3">
+                                <div className="flex items-center gap-2">
+                                    <Globe className="h-5 w-5" />
+                                    <div className="text-left">
+                                        <div className="text-2xl font-bold">{countries.length}</div>
+                                        <div className="text-sm text-white/70">Countries</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3">
+                                <div className="text-left">
+                                    <div className="text-2xl font-bold">{reviews.filter(r => r.rating === 5).length}</div>
+                                    <div className="text-sm text-white/70">5-Star Reviews</div>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Location Filter */}
+            {/* Filters & Sort */}
             <section className="py-6 bg-background border-b sticky top-[64px] md:top-[104px] z-40">
                 <div className="container mx-auto px-4">
-                    <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2">
-                        <span className="text-sm text-muted-foreground flex items-center gap-1 shrink-0">
-                            <MapPin className="h-4 w-4" />
-                            Location:
-                        </span>
-                        <Button
-                            variant={filterLocation === null ? 'default' : 'outline'}
-                            size="sm"
-                            onClick={() => setFilterLocation(null)}
-                            className={filterLocation === null ? 'gradient-primary text-white' : ''}
-                        >
-                            All
-                        </Button>
-                        {locations.map((location) => (
-                            <Button
-                                key={location}
-                                variant={filterLocation === location ? 'default' : 'outline'}
-                                size="sm"
-                                onClick={() => setFilterLocation(location)}
-                                className={filterLocation === location ? 'gradient-primary text-white' : ''}
-                            >
-                                {location}
-                            </Button>
-                        ))}
+                    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Filter className="h-4 w-4" />
+                            <span className="font-medium">{filteredReviews.length} Reviews</span>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3 w-full md:w-auto">
+                            {/* Country Filter */}
+                            <Select value={filterCountry} onValueChange={setFilterCountry}>
+                                <SelectTrigger className="w-full sm:w-[180px]">
+                                    <Globe className="h-4 w-4 mr-2" />
+                                    <SelectValue placeholder="All Countries" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Countries ({reviews.length})</SelectItem>
+                                    {countries.map((country) => (
+                                        <SelectItem key={country} value={country}>
+                                            {country} ({countryStats[country]})
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                            {/* Rating Filter */}
+                            <Select value={filterRating} onValueChange={setFilterRating}>
+                                <SelectTrigger className="w-full sm:w-[150px]">
+                                    <Star className="h-4 w-4 mr-2" />
+                                    <SelectValue placeholder="All Ratings" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Ratings</SelectItem>
+                                    <SelectItem value="5">5 Stars</SelectItem>
+                                    <SelectItem value="4">4 Stars</SelectItem>
+                                    <SelectItem value="3">3 Stars</SelectItem>
+                                </SelectContent>
+                            </Select>
+
+                            {/* Sort By */}
+                            <Select value={sortBy} onValueChange={setSortBy}>
+                                <SelectTrigger className="w-full sm:w-[150px]">
+                                    <SelectValue placeholder="Sort By" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="recent">Most Recent</SelectItem>
+                                    <SelectItem value="helpful">Most Helpful</SelectItem>
+                                    <SelectItem value="rating">Highest Rating</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Reviews List - Full Width Grid */}
+            {/* Reviews Grid */}
             <section className="py-12 md:py-16">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-xl font-semibold text-foreground mb-6">
-                        {filteredReviews.length} Reviews
-                    </h2>
-
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredReviews.map((review, index) => (
                             <motion.div
@@ -116,11 +202,21 @@ export function ReviewsPageClient() {
                             >
                                 <Card className="h-full hover-lift border-0 shadow-sm">
                                     <CardContent className="p-6">
+                                        {/* Country Badge */}
+                                        {review.country && (
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
+                                                    <Globe className="h-3 w-3" />
+                                                    {review.country}
+                                                </span>
+                                            </div>
+                                        )}
+
                                         <Quote className="h-8 w-8 text-primary/20 mb-4" />
 
                                         <StarRating rating={review.rating} />
 
-                                        <p className="text-foreground mt-4 mb-6 leading-relaxed">
+                                        <p className="text-foreground mt-4 mb-6 leading-relaxed line-clamp-6">
                                             &ldquo;{review.comment}&rdquo;
                                         </p>
 
@@ -162,6 +258,12 @@ export function ReviewsPageClient() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {filteredReviews.length === 0 && (
+                        <div className="text-center py-12">
+                            <p className="text-muted-foreground">No reviews found matching your filters.</p>
+                        </div>
+                    )}
                 </div>
             </section>
         </div>

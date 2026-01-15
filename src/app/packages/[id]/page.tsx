@@ -191,8 +191,7 @@ _Sent from Kerala Tours Website_`;
                                 </div>
 
                                 <CardContent className="p-4">
-                                    {/* Quick Info Grid */}
-                                    <div className="grid grid-cols-3 gap-3 mb-4">
+                                    <div className="grid grid-cols-2 gap-3 mb-4">
                                         <div className="text-center p-3 bg-gray-50 rounded-xl">
                                             <Star className="h-5 w-5 text-amber-500 mx-auto mb-1" />
                                             <p className="text-xs text-gray-500">Rating</p>
@@ -202,11 +201,6 @@ _Sent from Kerala Tours Website_`;
                                             <MapPin className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
                                             <p className="text-xs text-gray-500">Destination</p>
                                             <p className="text-sm font-semibold text-gray-900">{pkg.destination}</p>
-                                        </div>
-                                        <div className="text-center p-3 bg-gray-50 rounded-xl">
-                                            <Users className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
-                                            <p className="text-xs text-gray-500">Group</p>
-                                            <p className="text-sm font-semibold text-gray-900">2-6 pax</p>
                                         </div>
                                     </div>
 
@@ -406,15 +400,6 @@ _Sent from Kerala Tours Website_`;
                                             <div>
                                                 <p className="text-xs text-gray-500">Destination</p>
                                                 <p className="font-medium text-gray-900">{pkg.destination}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                                                <Users className="h-5 w-5 text-gray-600" />
-                                            </div>
-                                            <div>
-                                                <p className="text-xs text-gray-500">Group Size</p>
-                                                <p className="font-medium text-gray-900">2-6 Travelers</p>
                                             </div>
                                         </div>
                                     </div>

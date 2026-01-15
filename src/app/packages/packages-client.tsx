@@ -14,6 +14,7 @@ const categories = [
     { id: 'kerala', label: 'Kerala' },
     { id: 'domestic', label: 'Domestic' },
     { id: 'outside-kerala', label: 'Outside Kerala' },
+    { id: 'pilgrimage', label: 'Pilgrimage' },
 ];
 
 const destinations = [...new Set(packages.map((pkg) => pkg.destination))];
@@ -85,8 +86,8 @@ export function PackagesPageClient() {
                                 size="sm"
                                 onClick={() => setSelectedCategory(category.id)}
                                 className={`shrink-0 rounded-full ${selectedCategory === category.id
-                                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
-                                        : 'border-gray-300 text-gray-600 hover:bg-gray-100'
+                                    ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                    : 'border-gray-300 text-gray-600 hover:bg-gray-100'
                                     }`}
                             >
                                 {category.label}
@@ -109,8 +110,8 @@ export function PackagesPageClient() {
                                 key={destination}
                                 variant="secondary"
                                 className={`cursor-pointer shrink-0 ${searchQuery === destination
-                                        ? 'bg-emerald-100 text-emerald-700 border-emerald-300'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                    ? 'bg-emerald-100 text-emerald-700 border-emerald-300'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                     }`}
                                 onClick={() => setSearchQuery(searchQuery === destination ? '' : destination)}
                             >
