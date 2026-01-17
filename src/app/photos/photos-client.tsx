@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { photoCategories } from '@/lib/data';
 
 // Photos with real images
@@ -168,6 +168,10 @@ export function PhotosPageClient() {
                                 exit={{ opacity: 0 }}
                                 className="relative"
                             >
+                                {/* Accessible title for screen readers */}
+                                <DialogTitle className="sr-only">
+                                    {selectedPhoto.title}
+                                </DialogTitle>
                                 {/* Close button */}
                                 <Button
                                     variant="ghost"

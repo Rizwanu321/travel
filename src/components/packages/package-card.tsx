@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Package } from '@/types';
@@ -24,10 +25,13 @@ export function PackageCard({ package_: pkg, index = 0 }: PackageCardProps) {
                 <div className="h-full bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100">
                     {/* Image Container */}
                     <div className="relative h-44 sm:h-48 md:h-52 overflow-hidden">
-                        <img
+                        <Image
                             src={pkg.image}
-                            alt={pkg.destination}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            alt={`${pkg.destination} - ${pkg.name} tour package in Kerala`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            loading="lazy"
                         />
 
                         {/* Gradient Overlay */}

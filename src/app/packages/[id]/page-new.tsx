@@ -19,8 +19,7 @@ export async function generateStaticParams() {
 
 // Generate dynamic metadata for each package
 export async function generateMetadata({ params }: PackagePageProps): Promise<Metadata> {
-    const resolvedParams = await params;
-    const pkg = packages.find(p => p.id === resolvedParams.id);
+    const pkg = packages.find(p => p.id === params.id);
 
     if (!pkg) {
         return {
@@ -85,9 +84,8 @@ export async function generateMetadata({ params }: PackagePageProps): Promise<Me
 }
 
 // Server Component - Handles SEO and data fetching
-export default async function PackagePage({ params }: PackagePageProps) {
-    const resolvedParams = await params;
-    const pkg = packages.find(p => p.id === resolvedParams.id);
+export default function PackagePage({ params }: PackagePageProps) {
+    const pkg = packages.find(p => p.id === params.id);
 
     if (!pkg) {
         notFound();
@@ -95,7 +93,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
     // Get similar packages on the server
     const similarPackages = packages
-        .filter(p => p.id !== resolvedParams.id && p.category === pkg.category)
+        .filter(p => p.id !== params.id && p.category === pkg.category)
         .slice(0, 3);
 
     // Breadcrumb data for SEO

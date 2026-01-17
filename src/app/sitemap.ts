@@ -1,42 +1,33 @@
 import { MetadataRoute } from 'next';
+import { packages } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://keralatravel.vercel.app';
 
-    // Static pages
+    // Static pages with proper priorities
     const staticPages = [
-        '',
-        '/packages',
-        '/services',
-        '/categories',
-        '/photos',
-        '/reviews',
-        '/contact',
-        '/about',
+        { url: '', priority: 1.0, changeFrequency: 'daily' as const },
+        { url: '/packages', priority: 0.9, changeFrequency: 'daily' as const },
+        { url: '/services', priority: 0.8, changeFrequency: 'weekly' as const },
+        { url: '/categories', priority: 0.7, changeFrequency: 'weekly' as const },
+        { url: '/reviews', priority: 0.8, changeFrequency: 'daily' as const },
+        { url: '/photos', priority: 0.6, changeFrequency: 'weekly' as const },
+        { url: '/contact', priority: 0.7, changeFrequency: 'monthly' as const },
     ];
 
-    // Package IDs - you can add more as needed
-    const packageIds = [
-        'kerala-1', 'kerala-2', 'kerala-3', 'kerala-4', 'kerala-5',
-        'kerala-6', 'kerala-7', 'kerala-8', 'kerala-9', 'kerala-10',
-        'goa-1', 'goa-2', 'goa-3', 'goa-4', 'goa-5', 'goa-6', 'goa-7',
-        'munnar-1', 'munnar-2', 'munnar-3', 'munnar-4',
-        'mysore-1', 'mysore-2', 'mysore-3',
-        'bekal-1', 'bekal-2', 'bekal-3', 'bekal-4',
-    ];
-
-    const staticRoutes = staticPages.map((route) => ({
-        url: `${baseUrl}${route}`,
+    const staticRoutes = staticPages.map((page) => ({
+        url: `${baseUrl}${page.url}`,
         lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : 0.8,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
     }));
 
-    const packageRoutes = packageIds.map((id) => ({
-        url: `${baseUrl}/packages/${id}`,
+    // Dynamic package routes - higher priority for featured packages
+    const packageRoutes = packages.map((pkg) => ({
+        url: `${baseUrl}/packages/${pkg.id}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
-        priority: 0.6,
+        priority: pkg.featured ? 0.9 : 0.7,
     }));
 
     return [...staticRoutes, ...packageRoutes];

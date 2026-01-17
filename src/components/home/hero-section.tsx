@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import {
     MapPin,
     Calendar,
@@ -180,12 +181,16 @@ _Sent from ${companyInfo.name} Website_`;
 
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden py-20 lg:py-24">
-            {/* Beautiful Kerala Munnar Background - Original Image */}
+            {/* Beautiful Kerala Munnar Background - Optimized Image */}
             <div className="absolute inset-0">
-                <img
+                <Image
                     src="/images/hero_kerala_munnar.png"
-                    alt="Kerala Munnar Tea Plantations - God's Own Country"
-                    className="w-full h-full object-cover object-center"
+                    alt="Kerala Munnar Tea Plantations - God's Own Country - Book Golden Globe Tour Taxi Service"
+                    fill
+                    className="object-cover object-center"
+                    sizes="100vw"
+                    priority
+                    quality={90}
                 />
                 {/* Gradient overlay for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 lg:to-transparent" />

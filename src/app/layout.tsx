@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import LoadingProvider from "@/components/providers/loading-provider";
 import { Header, Footer, MobileNav } from "@/components/layout";
+import { OrganizationSchema } from "@/components/seo";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -117,6 +118,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
+        <OrganizationSchema />
         <Providers>
           <LoadingProvider>
             <Header />
