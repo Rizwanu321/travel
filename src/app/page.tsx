@@ -8,10 +8,14 @@ import {
   ReviewsSection,
   CTASection,
 } from '@/components/home';
+import { FAQSchema } from '@/components/seo';
 
 export default function HomePage() {
   return (
     <>
+      {/* SEO: FAQ Schema for Kerala Tourism Questions */}
+      <FAQSchema />
+
       {/* 1. Hero Section with Booking Form */}
       <HeroSection />
 

@@ -9,9 +9,9 @@ export function OrganizationSchema() {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
         "@id": "https://keralaggtaxitravel.vercel.app",
-        "name": "Golden Globe Tour Taxi Service",
-        "alternateName": "Golden Globe Tours",
-        "description": "Best cab services and tour packages in Kerala. City tours, airport taxi, round trips, self-drive cars. Explore Goa, Munnar, Mysore, Bekal with 33+ tour packages.",
+        "name": "Golden Globe Tours - Kerala Tours and Travel",
+        "alternateName": "Best Travel Agency in Kerala | Golden Globe",
+        "description": "Kerala's best tours and travel agency offering taxi services, tour packages to must-visit places. Expert Kerala tour operators providing complete travel services including Munnar, Alleppey, Wayanad packages.",
         "url": "https://keralaggtaxitravel.vercel.app",
         "logo": {
             "@type": "ImageObject",
