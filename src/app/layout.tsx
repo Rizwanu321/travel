@@ -60,14 +60,14 @@ export const metadata: Metadata = {
     email: false,
     telephone: true,
   },
-  metadataBase: new URL("https://keralatravel.vercel.app"),
+  metadataBase: new URL("https://keralaggtaxitravel.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://keralatravel.vercel.app",
+    url: "https://keralaggtaxitravel.vercel.app",
     siteName: "Golden Globe",
     title: "Golden Globe | Best Taxi Service & Travel Agency in Kerala",
     description:

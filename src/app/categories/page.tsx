@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         title: 'Travel Categories | Golden Globe Tours',
         description: 'Browse car rentals, tour operators, tour packages, and holiday packages. Find your perfect Kerala travel option.',
         type: 'website',
-        url: 'https://keralatravel.vercel.app/categories',
+        url: 'https://keralaggtaxitravel.vercel.app/categories',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',

@@ -17,7 +17,7 @@ export function ReviewSchema({ review }: ReviewSchemaProps) {
         "itemReviewed": {
             "@type": "TravelAgency",
             "name": "Golden Globe Tour Taxi Service",
-            "image": "https://keralatravel.vercel.app/images/logo.png",
+            "image": "https://keralaggtaxitravel.vercel.app/images/logo.png",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Pattambi",
@@ -60,7 +60,7 @@ export function AggregateReviewSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "@id": "https://keralatravel.vercel.app",
+        "@id": "https://keralaggtaxitravel.vercel.app",
         "name": "Golden Globe Tour Taxi Service",
         "aggregateRating": {
             "@type": "AggregateRating",

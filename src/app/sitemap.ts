@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { packages } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://keralatravel.vercel.app';
+    const baseUrl = 'https://keralaggtaxitravel.vercel.app';
 
     // Static pages with proper priorities
     const staticPages = [

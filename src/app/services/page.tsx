@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         title: 'Taxi & Travel Services | Golden Globe Tours',
         description: 'Local trips, intercity travel, airport transfers, and city tours. Multiple vehicle options available 24/7.',
         type: 'website',
-        url: 'https://keralatravel.vercel.app/services',
+        url: 'https://keralaggtaxitravel.vercel.app/services',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',

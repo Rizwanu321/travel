@@ -8,18 +8,18 @@ export function OrganizationSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "@id": "https://keralatravel.vercel.app",
+        "@id": "https://keralaggtaxitravel.vercel.app",
         "name": "Golden Globe Tour Taxi Service",
         "alternateName": "Golden Globe Tours",
         "description": "Best cab services and tour packages in Kerala. City tours, airport taxi, round trips, self-drive cars. Explore Goa, Munnar, Mysore, Bekal with 33+ tour packages.",
-        "url": "https://keralatravel.vercel.app",
+        "url": "https://keralaggtaxitravel.vercel.app",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://keralatravel.vercel.app/images/logo.png",
+            "url": "https://keralaggtaxitravel.vercel.app/images/logo.png",
             "width": 250,
             "height": 250
         },
-        "image": "https://keralatravel.vercel.app/og-image.jpg",
+        "image": "https://keralaggtaxitravel.vercel.app/og-image.jpg",
         "telephone": "+919061883919",
         "email": "mdraffi114@gmail.com",
         "address": {

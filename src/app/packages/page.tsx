@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         title: 'Tour Packages | 47+ Destinations | Golden Globe Tours',
         description: 'Explore 47+ tour packages to Goa, Kerala, Munnar, Mysore, Bekal, and more. Best prices and hassle-free booking.',
         type: 'website',
-        url: 'https://keralatravel.vercel.app/packages',
+        url: 'https://keralaggtaxitravel.vercel.app/packages',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',

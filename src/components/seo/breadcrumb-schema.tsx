@@ -21,7 +21,7 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.name,
-            "item": `https://keralatravel.vercel.app${item.url}`
+            "item": `https://keralaggtaxitravel.vercel.app${item.url}`
         }))
     };
 

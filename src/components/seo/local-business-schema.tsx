@@ -8,9 +8,9 @@ export function LocalBusinessSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "@id": "https://keralatravel.vercel.app#localbusiness",
+        "@id": "https://keralaggtaxitravel.vercel.app#localbusiness",
         "name": "Golden Globe Tour Taxi Service",
-        "image": "https://keralatravel.vercel.app/images/logo.png",
+        "image": "https://keralaggtaxitravel.vercel.app/images/logo.png",
         "description": "Best taxi service and tour packages in Kerala. We offer city tours, airport taxi service, round trip cabs, and self-drive cars at affordable prices.",
         "address": {
             "@type": "PostalAddress",
@@ -25,7 +25,7 @@ export function LocalBusinessSchema() {
             "latitude": 10.8103,
             "longitude": 76.2272
         },
-        "url": "https://keralatravel.vercel.app",
+        "url": "https://keralaggtaxitravel.vercel.app",
         "telephone": "+919061883919",
         "email": "mdraffi114@gmail.com",
         "priceRange": "₹₹",

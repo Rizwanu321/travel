@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         title: 'Photo Gallery | Golden Globe Tours',
         description: 'View our fleet of vehicles, beautiful Kerala destinations, and happy travelers. Professional taxi and tour services.',
         type: 'website',
-        url: 'https://keralatravel.vercel.app/photos',
+        url: 'https://keralaggtaxitravel.vercel.app/photos',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',
