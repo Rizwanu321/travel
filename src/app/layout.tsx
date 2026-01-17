@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: "%s | Golden Globe Tour Taxi Service",
   },
   description:
-    "Book affordable cab services in Kerala. City tours, airport taxi, round trips, self-drive cars. Explore Goa, Munnar, Mysore, Bekal with 33+ tour packages. Pattambi, Palakkad.",
+    "Book affordable cab services in Kerala. City tours, airport taxi, round trips. Explore 33+ tour packages. Pattambi, Palakkad.",
   keywords: [
     "Kerala taxi service",
     "Palakkad cab booking",

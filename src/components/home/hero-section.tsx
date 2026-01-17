@@ -62,7 +62,7 @@ function TypewriterHeading() {
             transition={{ delay: 0.1 }}
         >
             <h1 className="leading-tight">
-                {/* Kerala Tours - Typewriter */}
+                {/* Golden Globe - Main H1 */}
                 <span className="block text-4xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black lg:font-extrabold drop-shadow-2xl p-1 font-[family-name:var(--font-playfair)] tracking-tight" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
                     {"Golden Globe".split("").map((letter, index) => (
                         <motion.span
@@ -81,26 +81,26 @@ function TypewriterHeading() {
                         </motion.span>
                     ))}
                 </span>
-                {/* Taxi Service - Typewriter */}
-                <span className="block text-2xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold lg:font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 mt-1 md:mt-2 drop-shadow-xl p-1 font-[family-name:var(--font-playfair)] tracking-tight" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
-                    {"Tour Taxi Service".split("").map((letter, index) => (
-                        <motion.span
-                            key={`${animationKey}-taxi-${index}`}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                delay: 1.0 + index * 0.06,
-                                duration: 0.3,
-                                ease: "easeOut"
-                            }}
-                            className="inline-block"
-                            style={{ minWidth: letter === " " ? "0.3em" : "auto" }}
-                        >
-                            {letter === " " ? "\u00A0" : letter}
-                        </motion.span>
-                    ))}
-                </span>
             </h1>
+            {/* Tagline - Separate element */}
+            <div className="block text-2xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold lg:font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 mt-1 md:mt-2 drop-shadow-xl p-1 font-[family-name:var(--font-playfair)] tracking-tight" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.4)' }}>
+                {"Tour Taxi Service".split("").map((letter, index) => (
+                    <motion.span
+                        key={`${animationKey}-taxi-${index}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            delay: 1.0 + index * 0.06,
+                            duration: 0.3,
+                            ease: "easeOut"
+                        }}
+                        className="inline-block"
+                        style={{ minWidth: letter === " " ? "0.3em" : "auto" }}
+                    >
+                        {letter === " " ? "\u00A0" : letter}
+                    </motion.span>
+                ))}
+            </div>
         </motion.div>
     );
 }
