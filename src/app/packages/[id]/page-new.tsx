@@ -49,11 +49,11 @@ export async function generateMetadata({ params }: PackagePageProps): Promise<Me
             title,
             description,
             type: 'website',
-            url: `https://keralatravel.vercel.app/packages/${pkg.id}`,
+            url: `https://www.keralaggtaxitravel.com/packages/${pkg.id}`,
             siteName: 'Golden Globe Tour Taxi Service',
             images: [
                 {
-                    url: `https://keralatravel.vercel.app${pkg.image}`,
+                    url: `https://www.keralaggtaxitravel.com${pkg.image}`,
                     width: 1200,
                     height: 630,
                     alt: `${pkg.destination} - ${pkg.name} tour package`,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: PackagePageProps): Promise<Me
             card: 'summary_large_image',
             title,
             description,
-            images: [`https://keralatravel.vercel.app${pkg.image}`],
+            images: [`https://www.keralaggtaxitravel.com${pkg.image}`],
             creator: '@goldenglobe',
         },
         alternates: {

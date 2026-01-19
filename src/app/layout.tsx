@@ -244,14 +244,14 @@ export const metadata: Metadata = {
     email: false,
     telephone: true,
   },
-  metadataBase: new URL("https://keralaggtaxitravel.vercel.app"),
+  metadataBase: new URL("https://www.keralaggtaxitravel.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://keralaggtaxitravel.vercel.app",
+    url: "https://www.keralaggtaxitravel.com",
     siteName: "Golden Globe Tours Kerala",
     title: "Kerala Tours and Travel | Best Places to Visit | Top Taxi Service",
     description:

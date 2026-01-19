@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         title: 'Customer Reviews | 4.8★ from 500+ Travelers | Golden Globe',
         description: 'Read genuine reviews from 500+ happy travelers. See why Golden Globe Tours is the #1 choice in Kerala.',
         type: 'website',
-        url: 'https://keralaggtaxitravel.vercel.app/reviews',
+        url: 'https://www.keralaggtaxitravel.com/reviews',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',

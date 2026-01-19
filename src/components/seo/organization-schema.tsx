@@ -8,18 +8,18 @@ export function OrganizationSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "@id": "https://keralaggtaxitravel.vercel.app",
+        "@id": "https://www.keralaggtaxitravel.com",
         "name": "Golden Globe Tours - Kerala Tours and Travel",
         "alternateName": "Best Travel Agency in Kerala | Golden Globe",
         "description": "Kerala's best tours and travel agency offering taxi services, tour packages to must-visit places. Expert Kerala tour operators providing complete travel services including Munnar, Alleppey, Wayanad packages.",
-        "url": "https://keralaggtaxitravel.vercel.app",
+        "url": "https://www.keralaggtaxitravel.com",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://keralaggtaxitravel.vercel.app/images/logo.png",
+            "url": "https://www.keralaggtaxitravel.com/images/logo.png",
             "width": 250,
             "height": 250
         },
-        "image": "https://keralaggtaxitravel.vercel.app/og-image.jpg",
+        "image": "https://www.keralaggtaxitravel.com/og-image.jpg",
         "telephone": "+919061883919",
         "email": "mdraffi114@gmail.com",
         "address": {

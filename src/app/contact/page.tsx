@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         title: 'Contact Us | Golden Globe Tours',
         description: 'Call +91 90618 83919 or visit our office in Pattambi, Palakkad. 24/7 customer support for taxi and tour bookings.',
         type: 'website',
-        url: 'https://keralaggtaxitravel.vercel.app/contact',
+        url: 'https://www.keralaggtaxitravel.com/contact',
         siteName: 'Golden Globe Tour Taxi Service',
         images: [{
             url: '/og-image.jpg',

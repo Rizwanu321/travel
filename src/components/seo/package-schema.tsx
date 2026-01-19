@@ -14,10 +14,10 @@ export function PackageSchema({ pkg }: PackageSchemaProps) {
     const schema = {
         "@context": "https://schema.org",
         "@type": "TouristTrip",
-        "@id": `https://keralaggtaxitravel.vercel.app/packages/${pkg.id}`,
+        "@id": `https://www.keralaggtaxitravel.com/packages/${pkg.id}`,
         "name": pkg.name,
         "description": pkg.description,
-        "image": `https://keralaggtaxitravel.vercel.app${pkg.image}`,
+        "image": `https://www.keralaggtaxitravel.com${pkg.image}`,
         "touristType": "Leisure",
         "itinerary": {
             "@type": "ItemList",
@@ -34,7 +34,7 @@ export function PackageSchema({ pkg }: PackageSchemaProps) {
             "availability": "https://schema.org/InStock",
             "validFrom": new Date().toISOString(),
             "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
-            "url": `https://keralaggtaxitravel.vercel.app/packages/${pkg.id}`,
+            "url": `https://www.keralaggtaxitravel.com/packages/${pkg.id}`,
             "seller": {
                 "@type": "TravelAgency",
                 "name": "Golden Globe Tour Taxi Service",
@@ -45,7 +45,7 @@ export function PackageSchema({ pkg }: PackageSchemaProps) {
             "@type": "TravelAgency",
             "name": "Golden Globe Tour Taxi Service",
             "telephone": "+919061883919",
-            "url": "https://keralaggtaxitravel.vercel.app"
+            "url": "https://www.keralaggtaxitravel.com"
         },
         "aggregateRating": {
             "@type": "AggregateRating",

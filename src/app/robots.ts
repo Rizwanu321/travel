@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/api/', '/_next/'],
         },
-        sitemap: 'https://keralaggtaxitravel.vercel.app/sitemap.xml',
+        sitemap: 'https://www.keralaggtaxitravel.com/sitemap.xml',
     };
 }
