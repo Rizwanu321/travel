@@ -3,6 +3,7 @@ import {
   QuickActions,
   NavigationTabs,
   FeaturedPackages,
+  RoomsSection,
   ServicesSection,
   CategoriesSection,
   ReviewsSection,
@@ -30,6 +31,11 @@ export default function HomePage() {
       {/* 4. Tour Packages Section */}
       <section id="packages">
         <FeaturedPackages />
+      </section>
+
+      {/* 4.5 Rooms & Stays Section */}
+      <section id="rooms">
+        <RoomsSection />
       </section>
 
       {/* 5. Services Section */}

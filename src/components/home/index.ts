@@ -3,6 +3,7 @@ export { QuickActions } from './quick-actions';
 export { NavigationTabs } from './navigation-tabs';
 export { StatsSection } from './stats-section';
 export { FeaturedPackages } from './featured-packages';
+export { RoomsSection } from './rooms-section';
 export { ServicesSection } from './services-section';
 export { ReviewsSection } from './reviews-section';
 export { CategoriesSection } from './categories-section';
