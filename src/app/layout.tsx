@@ -290,6 +290,9 @@ export const metadata: Metadata = {
     apple: "/images/logo.png?v=7",
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "BKQsUUJGfP02jxngT6ZVCH3-deU6nc0erYCg-nRdsUQ",
+  },
 };
 
 export default function RootLayout({
